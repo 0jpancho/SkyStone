@@ -5,7 +5,7 @@ import com.disnodeteam.dogecommander.DogeOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.robot.Commands.ArcadeDrive;
+import org.firstinspires.ftc.teamcode.robot.teleopcommands.ArcadeDrive;
 import org.firstinspires.ftc.teamcode.robot.subsystems.DriveTrain;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
 
@@ -28,5 +28,7 @@ public class DogeTeleopTest extends LinearOpMode implements DogeOpMode {
         robot.runCommandsParallel(
                 new ArcadeDrive(drive, gamepad1)
         );
+
+        robot.stop();
     }
 }

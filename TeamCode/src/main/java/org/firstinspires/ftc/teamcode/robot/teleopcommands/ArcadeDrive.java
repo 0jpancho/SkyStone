@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.robot.Commands;
+package org.firstinspires.ftc.teamcode.robot.teleopcommands;
 
 import com.disnodeteam.dogecommander.Command;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -19,8 +19,6 @@ public class ArcadeDrive implements Command {
     public ArcadeDrive(DriveTrain driveTrain, Gamepad gamepad){
         this.driveTrain = driveTrain;
         this.driver = gamepad;
-
-
     }
 
     @Override
