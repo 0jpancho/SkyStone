@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.seasonPackage.Teleop;
+package org.firstinspires.ftc.teamcode.seasonpackage.Teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;

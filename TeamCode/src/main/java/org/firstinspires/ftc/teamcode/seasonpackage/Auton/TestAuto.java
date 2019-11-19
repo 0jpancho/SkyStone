@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.seasonPackage.Auton;
+package org.firstinspires.ftc.teamcode.seasonpackage.Auton;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;

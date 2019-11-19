@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.seasonPackage.Calibration;
+package org.firstinspires.ftc.teamcode.seasonpackage.Calibration;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
