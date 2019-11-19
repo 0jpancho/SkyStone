@@ -24,6 +24,7 @@ public class MotorTesting extends LinearOpMode {
 
         waitForStart();
 
+        /*
         while (opModeIsActive() && isStarted() && !isStopRequested()){
             if (driver.a){
                 robot.drive.frontLeft.setPower(1);
@@ -53,5 +54,7 @@ public class MotorTesting extends LinearOpMode {
 
             telemetry.update();
         }
+        */
     }
+
 }

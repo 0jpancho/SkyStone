@@ -32,15 +32,15 @@ public class TestTeleop extends LinearOpMode {
 
         while (opModeIsActive() && !isStopRequested() && isStarted()) {
 
-            robot.drive.fieldCentricDrive(-driver.left_stick_y, driver.left_stick_x,
-                                            driver.right_stick_x, robot.imu);
+            //robot.drive.fieldCentricDrive(-driver.left_stick_y, driver.left_stick_x,
+                                            //driver.right_stick_x, robot.imu);
 
-            robot.intake.intakeOuttake(operator.left_bumper, operator.right_bumper);
-            robot.intake.pivotIntake(operator.left_stick_y);
+            //robot.intake.intakeOuttake(operator.left_bumper, operator.right_bumper);
+            //robot.intake.pivotIntake(operator.left_stick_y);
 
             //robot.lift.moveLift(operator.right_stick_y);
 
-            robot.robotTelemetry();
+            //robot.robotTelemetry();
         }
     }
 }

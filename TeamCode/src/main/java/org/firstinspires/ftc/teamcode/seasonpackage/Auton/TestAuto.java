@@ -16,8 +16,8 @@ public class TestAuto extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()){
-            robot.drive.driveForwardsBackwards(0.5,0.1,0,0,12, 0);
-            robot.drive.turnPID(0.25, 0.1, 0, 0, 45, robot.imu, 50, 2);
+            //robot.drive.driveForwardsBackwards(0.5,0.1,0,0,12, 0);
+            //robot.drive.turnPID(0.25, 0.1, 0, 0, 45, robot.imu, 50, 2);
         }
     }
 }
