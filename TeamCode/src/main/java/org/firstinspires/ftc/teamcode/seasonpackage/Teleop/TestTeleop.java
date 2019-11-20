@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.teamcode.robot.Robot;
 import org.firstinspires.ftc.teamcode.util.Constants;
 
-@TeleOp(name = "Teleop")
+@TeleOp(name = "Teleop", group = "Teleop")
 public class TestTeleop extends LinearOpMode {
 
     Robot robot;

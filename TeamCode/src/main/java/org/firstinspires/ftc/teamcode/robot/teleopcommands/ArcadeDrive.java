@@ -3,27 +3,27 @@ package org.firstinspires.ftc.teamcode.robot.teleopcommands;
 import com.disnodeteam.dogecommander.Command;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.robot.subsystems.DriveTrain;
+import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 
 import java.util.Arrays;
 
 public class ArcadeDrive implements Command {
 
-    private DriveTrain driveTrain;
+    private Drive drive;
     private Gamepad driver;
 
     private double y = 0;
     private double x = 0;
     private double rot = 0;
 
-    public ArcadeDrive(DriveTrain driveTrain, Gamepad gamepad){
-        this.driveTrain = driveTrain;
+    public ArcadeDrive(Drive drive, Gamepad gamepad){
+        this.drive = drive;
         this.driver = gamepad;
     }
 
     @Override
     public void start(){
-        driveTrain.setPower(0,0,0,0);
+        drive.setPower(0,0,0,0);
     }
 
     @Override
@@ -48,12 +48,12 @@ public class ArcadeDrive implements Command {
             backRightPower /= wheelPowers[3];
         }
 
-        driveTrain.setPower(frontLeftPower, backLeftPower, frontRightPower, backRightPower);
+        drive.setPower(frontLeftPower, backLeftPower, frontRightPower, backRightPower);
     }
 
     @Override
     public void stop(){
-        driveTrain.setPower(0,0,0,0);
+        drive.setPower(0,0,0,0);
     }
 
     @Override

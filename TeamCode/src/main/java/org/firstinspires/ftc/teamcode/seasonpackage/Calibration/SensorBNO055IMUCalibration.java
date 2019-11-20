@@ -46,12 +46,12 @@ import java.io.File;
 import java.util.Locale;
 
 /**
- * {@link SensorBNO055IMUCalibration} calibrates the IMU accelerometer per
+ * {@link SensorBNO055IMUCalibration} calibrates the RevIMU accelerometer per
  * "Section 3.11 Calibration" of the BNO055 specification.
  *
- * <p>Manual calibration of the IMU is definitely NOT necessary: except for the magnetometer
+ * <p>Manual calibration of the RevIMU is definitely NOT necessary: except for the magnetometer
  * (which is not used by the default {@link BNO055IMU.SensorMode#IMU
- * SensorMode#IMU}), the BNO055 is internally self-calibrating and thus can be very successfully
+ * SensorMode#RevIMU}), the BNO055 is internally self-calibrating and thus can be very successfully
  * used without manual intervention. That said, performing a one-time calibration, saving the
  * results persistently, then loading them again at each run can help reduce the time that automatic
  * calibration requires.</p>
@@ -81,12 +81,12 @@ import java.util.Locale;
  *              slowly moving the device though various axes until it does."</ol>
  * </li>
  *
- * <p>To calibrate the IMU, run this sample opmode with a gamepad attached to the driver station.
- * Once the IMU has reached sufficient calibration as reported on telemetry, press the 'A'
+ * <p>To calibrate the RevIMU, run this sample opmode with a gamepad attached to the driver station.
+ * Once the RevIMU has reached sufficient calibration as reported on telemetry, press the 'A'
  * button on the gamepad to write the calibration to a file. That file can then be indicated
- * later when running an opmode which uses the IMU.</p>
+ * later when running an opmode which uses the RevIMU.</p>
  *
- * <p>Note: if your intended uses of the IMU do not include use of all its sensors (for exmaple,
+ * <p>Note: if your intended uses of the RevIMU do not include use of all its sensors (for exmaple,
  * you might not use the magnetometer), then it makes little sense for you to wait for full
  * calibration of the sensors you are not using before saving the calibration data. Indeed,
  * it appears that in a SensorMode that doesn't use the magnetometer (for example), the
@@ -98,7 +98,7 @@ import java.util.Locale;
  * @see <a href="https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST_BNO055_DS000_14.pdf">BNO055 specification</a>
  */
 
-@TeleOp(name = "Sensor: BNO055 IMU Calibration", group = "Sensor")
+@TeleOp(name = "Sensor: BNO055 RevIMU Calibration", group = "Sensor")
 public class SensorBNO055IMUCalibration extends LinearOpMode
     {
     //----------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ public class SensorBNO055IMUCalibration extends LinearOpMode
         telemetry.log().setCapacity(12);
         telemetry.log().add("");
         telemetry.log().add("Please refer to the calibration instructions");
-        telemetry.log().add("contained in the Adafruit IMU calibration");
+        telemetry.log().add("contained in the Adafruit RevIMU calibration");
         telemetry.log().add("sample opmode.");
         telemetry.log().add("");
         telemetry.log().add("When sufficient calibration has been reached,");
@@ -128,10 +128,10 @@ public class SensorBNO055IMUCalibration extends LinearOpMode
         telemetry.log().add("calibration data to a file.");
         telemetry.log().add("");
 
-        // We are expecting the IMU to be attached to an I2C port on a Core Device Interface Module and named "imu".
+        // We are expecting the RevIMU to be attached to an I2C port on a Core Device Interface Module and named "imu".
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.loggingEnabled = true;
-        parameters.loggingTag     = "IMU";
+        parameters.loggingTag     = "RevIMU";
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         imu.initialize(parameters);
 
@@ -155,8 +155,8 @@ public class SensorBNO055IMUCalibration extends LinearOpMode
 
                 // Save the calibration data to a file. You can choose whatever file
                 // name you wish here, but you'll want to indicate the same file name
-                // when you initialize the IMU in an opmode in which it is used. If you
-                // have more than one IMU on your robot, you'll of course want to use
+                // when you initialize the RevIMU in an opmode in which it is used. If you
+                // have more than one RevIMU on your robot, you'll of course want to use
                 // different configuration file names for each.
                 String filename = "AdafruitIMUCalibration.json";
                 File file = AppUtil.getInstance().getSettingsFile(filename);
@@ -177,7 +177,7 @@ public class SensorBNO055IMUCalibration extends LinearOpMode
     void composeTelemetry() {
 
         // At the beginning of each telemetry update, grab a bunch of data
-        // from the IMU that we will then display in separate lines.
+        // from the RevIMU that we will then display in separate lines.
         telemetry.addAction(new Runnable() { @Override public void run()
                 {
                 // Acquiring the angles is relatively expensive; we don't want

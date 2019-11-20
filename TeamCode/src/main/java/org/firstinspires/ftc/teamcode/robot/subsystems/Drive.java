@@ -10,18 +10,18 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
 import org.firstinspires.ftc.teamcode.util.MotorPair;
 
-public class DriveTrain implements Subsystem{
+public class Drive implements Subsystem{
     private HardwareMap hardwareMap;
 
-    private DcMotorEx frontLeft, backLeft, frontRight, backRight;
-    MotorPair leftStraightPair, rightStraightPair, leftStrafePair, rightStrafePair;
+    public DcMotorEx frontLeft, backLeft, frontRight, backRight;
+    public MotorPair leftStraightPair, rightStraightPair, leftStrafePair, rightStrafePair;
 
     private double frontLeftPow = 0;
     private double backLeftPow = 0;
     private double frontRightPow = 0;
     private double backRightPow = 0;
 
-    public DriveTrain(HardwareMap hardwareMap){
+    public Drive(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
     }
 
@@ -42,6 +42,12 @@ public class DriveTrain implements Subsystem{
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        leftStraightPair = new MotorPair(frontLeft, backLeft);
+        rightStraightPair = new MotorPair(frontRight, backRight);
+
+        leftStrafePair = new MotorPair(frontLeft, backRight);
+        rightStrafePair = new MotorPair(frontRight, backLeft);
+
         brakeMode(true);
     }
 
@@ -53,7 +59,7 @@ public class DriveTrain implements Subsystem{
         backRight.setPower(backRightPow);
     }
 
-    public void setPIDCoeffs(DcMotor.RunMode runMode, PIDFCoefficients coefficients){
+    public void setPIDFCoeffs(DcMotor.RunMode runMode, PIDFCoefficients coefficients){
 
         frontLeft.setPIDFCoefficients(runMode, coefficients);
         backLeft.setPIDFCoefficients(runMode, coefficients);
@@ -97,12 +103,12 @@ public class DriveTrain implements Subsystem{
         rightStraightPair.setPower(power);
     }
 
-    void setStrDrive(double left, double right) {
+    public void setStrDrive(double left, double right) {
         setStrL(left);
         setStrR(right);
     }
 
-    void stopStrMotors() {
+    public void stopStrMotors() {
         leftStraightPair.stop();
         rightStraightPair.stop();
     }
@@ -115,12 +121,12 @@ public class DriveTrain implements Subsystem{
         rightStrafePair.setPower(power);
     }
 
-    void setStrafeDrive(double left, double right){
+    public void setStrafeDrive(double left, double right){
         setStrafeL(left);
         setStrafeR(right);
     }
 
-    void stopStrafeMotors(){
+    public void stopStrafeMotors(){
         leftStrafePair.stop();
         rightStrafePair.stop();
     }
