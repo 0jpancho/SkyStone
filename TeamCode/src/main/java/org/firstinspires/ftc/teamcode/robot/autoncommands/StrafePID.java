@@ -59,6 +59,8 @@ public class StrafePID implements Command {
     @Override
     public void start(){
         drive.setPower(0,0,0,0);
+        drive.leftStrafePair.resetEncoder();
+        drive.rightStrafePair.resetEncoder();
 
         leftEncoder = drive.leftStrafePair.getEncoder();
         rightEncoder = drive.rightStrafePair.getEncoder();

@@ -50,6 +50,8 @@ public class TurnPID implements Command {
 
         this.coefficients = coefficients;
 
+        imu.zeroHeading();
+
         drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
         drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
     }
@@ -88,7 +90,6 @@ public class TurnPID implements Command {
     @Override
     public void stop(){
         drive.setPower(0,0,0,0);
-        imu.zeroHeading();
     }
 
     @Override

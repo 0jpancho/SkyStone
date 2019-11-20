@@ -59,6 +59,8 @@ public class DrivePID implements Command {
     @Override
     public void start(){
         drive.setPower(0,0,0,0);
+        drive.leftStrafePair.resetEncoder();
+        drive.rightStrafePair.resetEncoder();
 
         leftEncoder = drive.leftStraightPair.getEncoder();
         rightEncoder = drive.rightStraightPair.getEncoder();

@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
-import org.firstinspires.ftc.teamcode.util.MotorPair;
+import org.firstinspires.ftc.teamcode.hardware.MotorPair;
 
 public class Drive implements Subsystem{
     private HardwareMap hardwareMap;
