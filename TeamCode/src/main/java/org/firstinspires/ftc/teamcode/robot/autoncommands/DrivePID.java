@@ -14,24 +14,25 @@ public class DrivePID implements Command {
     private Drive drive;
     private Telemetry t;
 
-    double maxSpeed = 0;
-    double p = 0;
-    double i = 0;
-    double d = 0;
-    double inches = 0;
-    long delay = 0;
-    double left = 0;
-    double right = 0;
+    private double maxSpeed = 0;
+    private double p = 0;
+    private double i = 0;
+    private double d = 0;
+    private double inches = 0;
+    private long delay = 0;
 
-    PIDFCoefficients coefficients;
+    private double left = 0;
+    private double right = 0;
 
-    double targetPulses;
+    private PIDFCoefficients coefficients;
 
-    int leftEncoder = 0;
-    int rightEncoder = 0;
+    private double targetPulses;
 
-    SynchronousPID leftPID;
-    SynchronousPID rightPID;
+    private int leftEncoder = 0;
+    private int rightEncoder = 0;
+
+    private SynchronousPID leftPID;
+    private SynchronousPID rightPID;
 
     public DrivePID (Drive drive, double maxSpeed, double p, double i, double d, double inches, long delay, PIDFCoefficients coefficients, Telemetry telemetry){
         this.drive = drive;
@@ -52,8 +53,8 @@ public class DrivePID implements Command {
 
         targetPulses = inches * Constants.countsPerInch();
 
-        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
+        //drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
     }
 
     @Override

@@ -52,8 +52,8 @@ public class StrafePID implements Command {
 
         targetPulses = inches * Constants.countsPerInch();
 
-        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
+        //drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
     }
 
     @Override

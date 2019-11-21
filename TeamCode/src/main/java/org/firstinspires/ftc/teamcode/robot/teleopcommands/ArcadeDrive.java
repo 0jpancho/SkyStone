@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.robot.teleopcommands;
 
 import com.disnodeteam.dogecommander.Command;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
@@ -24,6 +25,7 @@ public class ArcadeDrive implements Command {
     @Override
     public void start(){
         drive.setPower(0,0,0,0);
+        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     @Override
