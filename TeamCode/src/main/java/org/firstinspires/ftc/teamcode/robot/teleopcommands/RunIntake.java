@@ -29,6 +29,9 @@ public class RunIntake implements Command {
         else if (operator.right_bumper){
             intake.setState(Intake.State.SPIT_OUT);
         }
+        else{
+            intake.setState(Intake.State.STOP);
+        }
 
         intake.setPivotPow(operator.left_stick_y);
     }

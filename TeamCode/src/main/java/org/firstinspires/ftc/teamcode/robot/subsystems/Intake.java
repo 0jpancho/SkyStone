@@ -22,7 +22,7 @@ public class Intake implements Subsystem{
 
     public enum State{
         INTAKE(1.0),
-        SPIT_OUT(0.6),
+        SPIT_OUT(-0.6),
         STOP(0.0);
 
         private final double power;
@@ -44,6 +44,9 @@ public class Intake implements Subsystem{
     public void initHardware(){
         this.left = hardwareMap.get(DcMotor.class, HardwareKeys.LEFT_NAME);
         this.right = hardwareMap.get(DcMotor.class, HardwareKeys.RIGHT_NAME);
+
+        left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         right.setDirection(DcMotorSimple.Direction.REVERSE);
 
