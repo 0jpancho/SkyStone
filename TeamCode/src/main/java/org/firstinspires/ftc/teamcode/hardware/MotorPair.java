@@ -5,10 +5,10 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 public class MotorPair {
 
-    public DcMotorEx motorOne, motorTwo;
-    public double power;
-    public double position;
-    public int encOffset = 0;
+    private DcMotorEx motorOne, motorTwo;
+    private double power;
+    private double position;
+    private int encOffset = 0;
 
     public MotorPair(DcMotorEx motorOne, DcMotorEx motorTwo) {
         this.motorOne = motorOne;

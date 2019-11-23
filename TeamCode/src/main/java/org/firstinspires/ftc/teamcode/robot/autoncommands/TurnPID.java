@@ -15,17 +15,17 @@ public class TurnPID implements Command {
     private IMU imu;
     private Telemetry t;
 
-    double maxTurn = 0;
+    private double maxTurn = 0;
 
-    double p = 0;
-    double i = 0;
-    double d = 0;
+    private double p = 0;
+    private double i = 0;
+    private double d = 0;
 
-    double angle = 0;
-    double turnTolerance = 0;
+    private double angle = 0;
+    private double turnTolerance = 0;
 
-    double heading = 0;
-    double turnFactor = 0;
+    private double heading = 0;
+    private double turnFactor = 0;
 
     private PIDFCoefficients coefficients;
 

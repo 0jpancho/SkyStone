@@ -20,7 +20,7 @@ public class IMU implements Subsystem {
     private HardwareMap hardwareMap;
     private Telemetry t;
 
-    float headingOffset;
+    private float headingOffset;
 
 
     public IMU(HardwareMap hardwareMap, Telemetry telemetry){
@@ -49,7 +49,7 @@ public class IMU implements Subsystem {
 
     @Override
     public void periodic(){
-        t.addData("IMU Calibrating?", isCalibrated());
+        t.addData("IMU Calibrated?", isCalibrated());
         t.addData("Normalized Heading", getHeading());
         t.addData("Raw Z Axis", imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES));
         t.update();
