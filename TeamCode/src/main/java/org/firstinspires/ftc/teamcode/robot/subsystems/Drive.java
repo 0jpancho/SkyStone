@@ -95,11 +95,11 @@ public class Drive implements Subsystem{
         backRight.setMode(runMode);
     }
 
-    void setStrL(double power){
+    private void setStrL(double power){
         leftStraightPair.setPower(power);
     }
 
-    void setStrR(double power) {
+    private void setStrR(double power) {
         rightStraightPair.setPower(power);
     }
 
@@ -113,11 +113,11 @@ public class Drive implements Subsystem{
         rightStraightPair.stop();
     }
 
-    void setStrafeL(double power){
+    private void setStrafeL(double power){
         leftStrafePair.setPower(power);
     }
 
-    void setStrafeR(double power){
+    private void setStrafeR(double power){
         rightStrafePair.setPower(power);
     }
 
