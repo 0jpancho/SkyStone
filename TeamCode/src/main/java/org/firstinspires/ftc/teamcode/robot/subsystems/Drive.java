@@ -25,7 +25,7 @@ public class Drive implements Subsystem{
         this.hardwareMap = hardwareMap;
     }
 
-    public void setPower(double frontLeftPow, double backLeftPow,double frontRightPow, double backRightPow){
+    public void setPower(double frontLeftPow, double backLeftPow, double frontRightPow, double backRightPow){
         this.frontLeftPow = frontLeftPow;
         this.backLeftPow = backLeftPow;
         this.frontRightPow = frontRightPow;
