@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
+import org.firstinspires.ftc.teamcode.robot.teleopcommands.ArcadeDrive;
 import org.firstinspires.ftc.teamcode.robot.teleopcommands.FieldCentricDrive;
 import org.firstinspires.ftc.teamcode.robot.teleopcommands.RunIntake;
 
@@ -31,8 +32,8 @@ public class DogeTeleopTest extends LinearOpMode implements DogeOpMode {
         waitForStart();
 
         robot.runCommandsParallel(
-                new FieldCentricDrive(drive, imu, gamepad1),
-                //new ArcadeDrive(drive, gamepad1),
+                //new FieldCentricDrive(drive, imu, gamepad1),
+                new ArcadeDrive(drive, gamepad1),
                 new RunIntake(intake, gamepad2)
         );
 

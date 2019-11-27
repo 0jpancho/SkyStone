@@ -39,8 +39,8 @@ public class Drive implements Subsystem{
         frontRight = hardwareMap.get(DcMotorEx.class, HardwareKeys.FR_NAME);
         backRight = hardwareMap.get(DcMotorEx.class,HardwareKeys.BR_NAME);
 
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
         leftStraightPair = new MotorPair(frontLeft, backLeft);
         rightStraightPair = new MotorPair(frontRight, backRight);

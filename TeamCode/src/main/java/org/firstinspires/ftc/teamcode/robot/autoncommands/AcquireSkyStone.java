@@ -17,7 +17,7 @@ public class AcquireSkyStone implements Command {
     private HardwareMap hardwareMap;
     private Telemetry telemetry;
 
-    private static SkystoneDetector detector;
+    private SkystoneDetector detector;
     private OpenCvCamera phoneCam;
 
     public AcquireSkyStone(HardwareMap hardwareMap, Telemetry telemetry){
