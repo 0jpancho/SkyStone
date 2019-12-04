@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.disnodeteam.dogecommander.DogeOpMode;
 
 import org.firstinspires.ftc.teamcode.robot.autoncommands.DrivePID;
+import org.firstinspires.ftc.teamcode.robot.autoncommands.TurnPID;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
@@ -32,5 +33,7 @@ public class DogeAutonTest extends LinearOpMode implements DogeOpMode {
         waitForStart();
 
         robot.runCommand(new DrivePID(drive, 0.5, 0.1, 0, 0, 12, 0, Constants.autoDrive, telemetry));
+
+        robot.runCommand(new TurnPID(drive, 0.25, 0.1, 0,0, 90, imu, 5, Constants.autoTurn, telemetry));
     }
 }

@@ -36,8 +36,8 @@ public class ArcadeDrive implements Command {
         rot = driver.right_stick_x;
 
         double frontLeftPower = y - x - rot;
-        double backLeftPower =  y + x + rot;
-        double frontRightPower = y + x - rot;
+        double backLeftPower =  y + x - rot;
+        double frontRightPower = y + x + rot;
         double backRightPower = y - x + rot;
 
         double[] wheelPowers = {frontLeftPower, backLeftPower, frontRightPower, backRightPower};

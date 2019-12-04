@@ -32,8 +32,8 @@ public class DogeTeleopTest extends LinearOpMode implements DogeOpMode {
         waitForStart();
 
         robot.runCommandsParallel(
-                //new FieldCentricDrive(drive, imu, gamepad1),
-                new ArcadeDrive(drive, gamepad1),
+                new FieldCentricDrive(drive, imu, gamepad1),
+                //new ArcadeDrive(drive, gamepad1),
                 new RunIntake(intake, gamepad2)
         );
 

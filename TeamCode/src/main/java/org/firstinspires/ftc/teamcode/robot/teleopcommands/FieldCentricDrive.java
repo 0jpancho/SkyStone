@@ -57,8 +57,8 @@ public class FieldCentricDrive implements Command {
         strafe = -y * Math.sin(rads) + x * Math.cos(rads);
 
         rawFLPow = forward - strafe - rot;
-        rawBLPow = forward + strafe + rot;
-        rawFRPow = forward + strafe - rot;
+        rawBLPow = forward + strafe - rot;
+        rawFRPow = forward + strafe + rot;
         rawBRPow = forward - strafe + rot;
 
         FLPow = Range.clip(rawFLPow, -1, 1);
