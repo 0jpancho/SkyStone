@@ -74,11 +74,11 @@ public class StrafePID implements Command {
         left = leftPID.calculate(leftEncoder);
         right = rightPID.calculate(rightEncoder);
 
-        t.addData("Left PID State", leftPID.getState());
+        t.addData("Left PID PowerState", leftPID.getState());
         t.addData("Left Setpoint", leftPID.getState());
 
-        t.addData("Right PID State", rightPID.getState());
-        t.addData("Right PID State", rightPID.getState());
+        t.addData("Right PID PowerState", rightPID.getState());
+        t.addData("Right PID PowerState", rightPID.getState());
 
         drive.setStrafeDrive(left, right);
 

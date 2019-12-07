@@ -118,8 +118,8 @@ Version 5.1 (20190820-222104)
 * Allows a REV Control Hub to update the firmware on a REV Expansion Hub via USB
 * Fixes [SkyStone issue #9](https://github.com/FIRST-Tech-Challenge/SkyStone/issues/9)
 * Fixes [ftc_app issue #715](https://github.com/ftctechnh/ftc_app/issues/715)
-* Prevents extra DS User clicks by filtering based on current state.
-* Prevents incorrect DS UI state changes when receiving new OpMode list from RC
+* Prevents extra DS User clicks by filtering based on current powerState.
+* Prevents incorrect DS UI powerState changes when receiving new OpMode list from RC
 * Adds support for REV Color Sensor V3
 * Adds a manual-refresh DS Camera Stream for remotely viewing RC camera frames.
     * To show the stream on the DS, initialize **but do not run** a stream-enabled opmode, select the Camera Stream option in the DS menu, and tap the image to refresh. This feature is automatically enabled when using Vuforia or TFOD—no additional RC configuration is required for typical use cases. To hide the stream, select the same menu item again.

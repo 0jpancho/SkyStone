@@ -583,7 +583,7 @@ implements <a href="../../../com/qualcomm/robotcore/eventloop/EventLoop.html" ti
                      java.lang.InterruptedException</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../com/qualcomm/robotcore/eventloop/EventLoop.html#teardown--">EventLoop</a></code></span></div>
 <div class="block">Teardown method, this will be called after the last call to loop. You should place your robot
- into a safe state before this method exits, since there will be no more changes to communicate
+ into a safe powerState before this method exits, since there will be no more changes to communicate
  with your robot.
 
  Threading: called on the EventLoopRunnable.run() thread.</div>

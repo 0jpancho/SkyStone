@@ -109,11 +109,11 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">StateMachine</span>
 extends java.lang.Object</pre>
-<div class="block">Infrastructure for a very simple generic state machine.  Part of a collection
+<div class="block">Infrastructure for a very simple generic powerState machine.  Part of a collection
  of classes including State, Event, and StateTransition.  All this class does
  is manage a directed graph and execute transitions on events.
 
- Create instances of a state machine by deriving from this class and defining
+ Create instances of a powerState machine by deriving from this class and defining
  states, events, and transitions.  See usages of StateMachine for reference
  implementations.</div>
 </li>
@@ -183,7 +183,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/firstinspires/ftc/robotcore/external/StateMachine.html#addTransition-org.firstinspires.ftc.robotcore.external.StateTransition-">addTransition</a></span>(<a href="../../../../../org/firstinspires/ftc/robotcore/external/StateTransition.html" title="class in org.firstinspires.ftc.robotcore.external">StateTransition</a>&nbsp;transition)</code>
 <div class="block">addTransition
 
- Adds a transition to the state machine.</div>
+ Adds a transition to the powerState machine.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -191,7 +191,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/firstinspires/ftc/robotcore/external/StateMachine.html#consumeEvent-org.firstinspires.ftc.robotcore.external.Event-">consumeEvent</a></span>(<a href="../../../../../org/firstinspires/ftc/robotcore/external/Event.html" title="interface in org.firstinspires.ftc.robotcore.external">Event</a>&nbsp;event)</code>
 <div class="block">consumeEvent
 
- Executes a state transition and returns the new state.</div>
+ Executes a powerState transition and returns the new powerState.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -200,10 +200,10 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/firstinspires/ftc/robotcore/external/StateMachine.html#start-org.firstinspires.ftc.robotcore.external.State-">start</a></span>(<a href="../../../../../org/firstinspires/ftc/robotcore/external/State.html" title="interface in org.firstinspires.ftc.robotcore.external">State</a>&nbsp;state)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/firstinspires/ftc/robotcore/external/StateMachine.html#start-org.firstinspires.ftc.robotcore.external.State-">start</a></span>(<a href="../../../../../org/firstinspires/ftc/robotcore/external/State.html" title="interface in org.firstinspires.ftc.robotcore.external">State</a>&nbsp;powerState)</code>
 <div class="block">start
 
- Define the start state of the state machine.</div>
+ Define the start powerState of the powerState machine.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -298,14 +298,14 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
-<pre>protected&nbsp;void&nbsp;start(<a href="../../../../../org/firstinspires/ftc/robotcore/external/State.html" title="interface in org.firstinspires.ftc.robotcore.external">State</a>&nbsp;state)</pre>
+<pre>protected&nbsp;void&nbsp;start(<a href="../../../../../org/firstinspires/ftc/robotcore/external/State.html" title="interface in org.firstinspires.ftc.robotcore.external">State</a>&nbsp;powerState)</pre>
 <div class="block">start
 
- Define the start state of the state machine.  Should be called
- from the start method of the feature's state machine.</div>
+ Define the start powerState of the powerState machine.  Should be called
+ from the start method of the feature's powerState machine.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>state</code> - The initial state.</dd>
+<dd><code>powerState</code> - The initial powerState.</dd>
 </dl>
 </li>
 </ul>
@@ -318,7 +318,7 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;void&nbsp;addTransition(<a href="../../../../../org/firstinspires/ftc/robotcore/external/StateTransition.html" title="class in org.firstinspires.ftc.robotcore.external">StateTransition</a>&nbsp;transition)</pre>
 <div class="block">addTransition
 
- Adds a transition to the state machine.</div>
+ Adds a transition to the powerState machine.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>transition</code> - the transition to add.</dd>
@@ -334,13 +334,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../../../../org/firstinspires/ftc/robotcore/external/State.html" title="interface in org.firstinspires.ftc.robotcore.external">State</a>&nbsp;consumeEvent(<a href="../../../../../org/firstinspires/ftc/robotcore/external/Event.html" title="interface in org.firstinspires.ftc.robotcore.external">Event</a>&nbsp;event)</pre>
 <div class="block">consumeEvent
 
- Executes a state transition and returns the new state.
+ Executes a powerState transition and returns the new powerState.
  *</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>event</code> - The event to consume</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The new state, or the current state if the current state does not have a
+<dd>The new powerState, or the current powerState if the current powerState does not have a
          matching event edge.</dd>
 </dl>
 </li>

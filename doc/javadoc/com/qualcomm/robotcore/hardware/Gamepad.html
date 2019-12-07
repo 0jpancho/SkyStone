@@ -395,7 +395,7 @@ extends RobocolParsableBase</pre>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html#copy-com.qualcomm.robotcore.hardware.Gamepad-">copy</a></span>(<a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html" title="class in com.qualcomm.robotcore.hardware">Gamepad</a>&nbsp;gamepad)</code>
-<div class="block">Copy the state of a gamepad into this gamepad</div>
+<div class="block">Copy the powerState of a gamepad into this gamepad</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -440,7 +440,7 @@ extends RobocolParsableBase</pre>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html#reset--">reset</a></span>()</code>
-<div class="block">Reset this gamepad into its initial state</div>
+<div class="block">Reset this gamepad into its initial powerState</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
@@ -456,7 +456,7 @@ extends RobocolParsableBase</pre>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html#setTimestamp-long-">setTimestamp</a></span>(long&nbsp;timestamp)</code>
-<div class="block">Sets the time at which this Gamepad last changed its state,
+<div class="block">Sets the time at which this Gamepad last changed its powerState,
  in the <code>SystemClock.uptimeMillis()</code> time base.</div>
 </td>
 </tr>
@@ -471,7 +471,7 @@ extends RobocolParsableBase</pre>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html#toString--">toString</a></span>()</code>
-<div class="block">Display a summary of this gamepad, including the state of all buttons, analog sticks, and triggers</div>
+<div class="block">Display a summary of this gamepad, including the powerState of all buttons, analog sticks, and triggers</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
@@ -873,7 +873,7 @@ extends RobocolParsableBase</pre>
 <li class="blockList">
 <h4>setTimestamp</h4>
 <pre>public&nbsp;void&nbsp;setTimestamp(long&nbsp;timestamp)</pre>
-<div class="block">Sets the time at which this Gamepad last changed its state,
+<div class="block">Sets the time at which this Gamepad last changed its powerState,
  in the <code>SystemClock.uptimeMillis()</code> time base.</div>
 </li>
 </ul>
@@ -895,13 +895,13 @@ extends RobocolParsableBase</pre>
 <h4>copy</h4>
 <pre>public&nbsp;void&nbsp;copy(<a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html" title="class in com.qualcomm.robotcore.hardware">Gamepad</a>&nbsp;gamepad)
           throws <a href="../../../../com/qualcomm/robotcore/exception/RobotCoreException.html" title="class in com.qualcomm.robotcore.exception">RobotCoreException</a></pre>
-<div class="block">Copy the state of a gamepad into this gamepad</div>
+<div class="block">Copy the powerState of a gamepad into this gamepad</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>gamepad</code> - state to be copied from</dd>
+<dd><code>gamepad</code> - powerState to be copied from</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/exception/RobotCoreException.html" title="class in com.qualcomm.robotcore.exception">RobotCoreException</a></code> - if the copy fails - gamepad will be in an unknown
-         state if this exception is thrown</dd>
+         powerState if this exception is thrown</dd>
 </dl>
 </li>
 </ul>
@@ -912,7 +912,7 @@ extends RobocolParsableBase</pre>
 <li class="blockList">
 <h4>reset</h4>
 <pre>public&nbsp;void&nbsp;reset()</pre>
-<div class="block">Reset this gamepad into its initial state</div>
+<div class="block">Reset this gamepad into its initial powerState</div>
 </li>
 </ul>
 <a name="setJoystickDeadzone-float-">
@@ -1029,7 +1029,7 @@ extends RobocolParsableBase</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
-<div class="block">Display a summary of this gamepad, including the state of all buttons, analog sticks, and triggers</div>
+<div class="block">Display a summary of this gamepad, including the powerState of all buttons, analog sticks, and triggers</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a summary</dd>

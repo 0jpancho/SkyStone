@@ -189,7 +189,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchSimple.html#isArmed--">isArmed</a></span>()</code>
 <div class="block">Returns whether, as of this instant, this device client is alive and operational in
  its normally expected mode; that is, whether it is currently in communication
- with its underlying hardware or whether it is in some other state.</div>
+ with its underlying hardware or whether it is in some other powerState.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -546,11 +546,11 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <pre>boolean&nbsp;isArmed()</pre>
 <div class="block">Returns whether, as of this instant, this device client is alive and operational in
  its normally expected mode; that is, whether it is currently in communication
- with its underlying hardware or whether it is in some other state. Note that a device
+ with its underlying hardware or whether it is in some other powerState. Note that a device
  client which is not engaged will never report as armed.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the arming state of this device client</dd>
+<dd>the arming powerState of this device client</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/Engagable.html#engage--"><code>Engagable.engage()</code></a></dd>
 </dl>

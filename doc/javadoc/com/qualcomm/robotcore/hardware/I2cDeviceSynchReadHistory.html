@@ -109,8 +109,8 @@ var activeTableTab = "activeTableTab";
  provided by means of a queue into which all data retrieved is (optionally) be stored.
  
  <p>This functionality can be useful in I2c devices in which the mere act of reading data causes
- state transitions in the actual device itself. For such devices, the history queue can (e.g.)
- assist the software driver layer for the device in reliably tracking the device state.</p>
+ powerState transitions in the actual device itself. For such devices, the history queue can (e.g.)
+ assist the software driver layer for the device in reliably tracking the device powerState.</p>
 
  <p>Implementations of <a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchReadHistory.html" title="interface in com.qualcomm.robotcore.hardware"><code>I2cDeviceSynchReadHistory</code></a> are commonly retrieved by casting from
  an implementation of <a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynch.html" title="interface in com.qualcomm.robotcore.hardware"><code>I2cDeviceSynch</code></a> or <a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchSimple.html" title="interface in com.qualcomm.robotcore.hardware"><code>I2cDeviceSynchSimple</code></a> (but don't forget

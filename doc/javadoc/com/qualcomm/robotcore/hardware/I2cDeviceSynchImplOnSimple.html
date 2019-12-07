@@ -404,13 +404,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynch.h
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchImplOnSimple.html#isArmed--">isArmed</a></span>()</code>
 <div class="block">Returns whether, as of this instant, this device client is alive and operational in
  its normally expected mode; that is, whether it is currently in communication
- with its underlying hardware or whether it is in some other state.</div>
+ with its underlying hardware or whether it is in some other powerState.</div>
 </td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchImplOnSimple.html#isEngaged--">isEngaged</a></span>()</code>
-<div class="block">Returns whether the object is currently in the engaged state.</div>
+<div class="block">Returns whether the object is currently in the engaged powerState.</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
@@ -892,12 +892,12 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynch.h
 <h4>isEngaged</h4>
 <pre>public&nbsp;boolean&nbsp;isEngaged()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/Engagable.html#isEngaged--">Engagable</a></code></span></div>
-<div class="block">Returns whether the object is currently in the engaged state.</div>
+<div class="block">Returns whether the object is currently in the engaged powerState.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/Engagable.html#isEngaged--">isEngaged</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/Engagable.html" title="interface in com.qualcomm.robotcore.hardware">Engagable</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>whether the object is currently in the engaged state.</dd>
+<dd>whether the object is currently in the engaged powerState.</dd>
 </dl>
 </li>
 </ul>
@@ -911,13 +911,13 @@ implements <a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynch.h
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchSimple.html#isArmed--">I2cDeviceSynchSimple</a></code></span></div>
 <div class="block">Returns whether, as of this instant, this device client is alive and operational in
  its normally expected mode; that is, whether it is currently in communication
- with its underlying hardware or whether it is in some other state. Note that a device
+ with its underlying hardware or whether it is in some other powerState. Note that a device
  client which is not engaged will never report as armed.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchSimple.html#isArmed--">isArmed</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../com/qualcomm/robotcore/hardware/I2cDeviceSynchSimple.html" title="interface in com.qualcomm.robotcore.hardware">I2cDeviceSynchSimple</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the arming state of this device client</dd>
+<dd>the arming powerState of this device client</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../com/qualcomm/robotcore/hardware/Engagable.html#engage--"><code>Engagable.engage()</code></a></dd>
 </dl>

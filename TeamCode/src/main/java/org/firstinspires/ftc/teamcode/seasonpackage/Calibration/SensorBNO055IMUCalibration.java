@@ -102,13 +102,13 @@ import java.util.Locale;
 public class SensorBNO055IMUCalibration extends LinearOpMode
     {
     //----------------------------------------------------------------------------------------------
-    // State
+    // PowerState
     //----------------------------------------------------------------------------------------------
 
     // Our sensors, motors, and other devices go here, along with other long term state
     BNO055IMU imu;
 
-    // State used for updating telemetry
+    // PowerState used for updating telemetry
     Orientation angles;
 
     //----------------------------------------------------------------------------------------------

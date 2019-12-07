@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <pre>public interface <span class="typeNameLabel">DigitalChannel</span>
 extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html" title="interface in com.qualcomm.robotcore.hardware">HardwareDevice</a></pre>
 <div class="block"><a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannel.html" title="interface in com.qualcomm.robotcore.hardware"><code>DigitalChannel</code></a> is an interface by which digital channels can be controlled.
- Such channels have a boolean state, and are modal as to direction, being either input
+ Such channels have a boolean powerState, and are modal as to direction, being either input
  channels or output channels.</div>
 </li>
 </ul>
@@ -167,7 +167,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannel.html#getState--">getState</a></span>()</code>
-<div class="block">Returns the current state of the channel</div>
+<div class="block">Returns the current powerState of the channel</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -186,8 +186,8 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannel.html#setState-boolean-">setState</a></span>(boolean&nbsp;state)</code>
-<div class="block">Sets the current state of the channel</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannel.html#setState-boolean-">setState</a></span>(boolean&nbsp;powerState)</code>
+<div class="block">Sets the current powerState of the channel</div>
 </td>
 </tr>
 </table>
@@ -249,10 +249,10 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <li class="blockList">
 <h4>getState</h4>
 <pre>boolean&nbsp;getState()</pre>
-<div class="block">Returns the current state of the channel</div>
+<div class="block">Returns the current powerState of the channel</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the current state of the channel</dd>
+<dd>the current powerState of the channel</dd>
 </dl>
 </li>
 </ul>
@@ -262,11 +262,11 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <ul class="blockList">
 <li class="blockList">
 <h4>setState</h4>
-<pre>void&nbsp;setState(boolean&nbsp;state)</pre>
-<div class="block">Sets the current state of the channel</div>
+<pre>void&nbsp;setState(boolean&nbsp;powerState)</pre>
+<div class="block">Sets the current powerState of the channel</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>state</code> - the new state of the channel</dd>
+<dd><code>powerState</code> - the new powerState of the channel</dd>
 </dl>
 </li>
 </ul>

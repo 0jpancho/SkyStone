@@ -308,7 +308,7 @@ the order they are declared.</div>
  a side effect of placing a motor in this mode, power is removed from the motor, causing
  it to stop, though it is unspecified whether the motor enters brake or float mode.
 
- Further, it should be noted that setting a motor to<a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.RunMode.html#STOP_AND_RESET_ENCODER"><code>STOP_AND_RESET_ENCODER</code></a> may or may not be a transient state: motors connected to some motor
+ Further, it should be noted that setting a motor to<a href="../../../../com/qualcomm/robotcore/hardware/DcMotor.RunMode.html#STOP_AND_RESET_ENCODER"><code>STOP_AND_RESET_ENCODER</code></a> may or may not be a transient powerState: motors connected to some motor
  controllers will remain in this mode until explicitly transitioned to a different one, while
  motors connected to other motor controllers will automatically transition to a different
  mode after the reset of the encoder is complete.</div>

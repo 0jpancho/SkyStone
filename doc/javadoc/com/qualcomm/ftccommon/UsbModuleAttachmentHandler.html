@@ -171,7 +171,7 @@ var activeTableTab = "activeTableTab";
 <div class="block">One of the hardware modules in the current robot configuration (such as a Modern Robotics
  DC Motor Controller, a Modern Robotics Legacy Module, etc) is now newly attached to the
  system (or so we think). The code in this method should deal with this event by, e.g.,
- putting the module into a correctly operating state.</div>
+ putting the module into a correctly operating powerState.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>module</code> - the module which is newly attached</dd>
@@ -193,7 +193,7 @@ var activeTableTab = "activeTableTab";
 <div class="block">One of the hardware modules in the current robot configuration (such as a Modern Robotics
  DC Motor Controller, a Modern Robotics Legacy Module, etc) has been disconnected from the
  system. The code in this method should deal with this event by, e.g., putting the module in
- a state where it merely pretends to function.</div>
+ a powerState where it merely pretends to function.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>module</code> - the module which has become disconnected</dd>

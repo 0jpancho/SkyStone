@@ -392,7 +392,7 @@ var activeTableTab = "activeTableTab";
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#update--">update</a></span>()</code>
 <div class="block">Sends the receiver <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html" title="interface in org.firstinspires.ftc.robotcore.external"><code>Telemetry</code></a> to the driver station if more than the <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#getMsTransmissionInterval--"><code>transmission interval</code></a> has elapsed since the last transmission, or schedules the transmission
- of the receiver should no subsequent <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html" title="interface in org.firstinspires.ftc.robotcore.external"><code>Telemetry</code></a> state be scheduled for transmission before
+ of the receiver should no subsequent <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html" title="interface in org.firstinspires.ftc.robotcore.external"><code>Telemetry</code></a> powerState be scheduled for transmission before
  the <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#getMsTransmissionInterval--"><code>transmission interval</code></a> expires.</div>
 </td>
 </tr>
@@ -585,7 +585,7 @@ var activeTableTab = "activeTableTab";
 <div class="block">In addition to items and lines, a telemetry may also contain a list of actions.
  When the telemetry is to be updated, these actions are evaluated before the telemetry
  lines are composed just prior to transmission. A typical use of such actions is to
- initialize some state variable, parts of which are subsequently displayed in items.
+ initialize some powerState variable, parts of which are subsequently displayed in items.
  This can help avoid needless re-evaluation.
 
  <p>Actions are cleared with <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#clearAll--"><code>clearAll()</code></a>, and can be removed with <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#removeAction-java.lang.Object-"><code>removeAction()</code></a>.</p></div>
@@ -626,7 +626,7 @@ var activeTableTab = "activeTableTab";
 <h4>update</h4>
 <pre>boolean&nbsp;update()</pre>
 <div class="block">Sends the receiver <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html" title="interface in org.firstinspires.ftc.robotcore.external"><code>Telemetry</code></a> to the driver station if more than the <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#getMsTransmissionInterval--"><code>transmission interval</code></a> has elapsed since the last transmission, or schedules the transmission
- of the receiver should no subsequent <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html" title="interface in org.firstinspires.ftc.robotcore.external"><code>Telemetry</code></a> state be scheduled for transmission before
+ of the receiver should no subsequent <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html" title="interface in org.firstinspires.ftc.robotcore.external"><code>Telemetry</code></a> powerState be scheduled for transmission before
  the <a href="../../../../../org/firstinspires/ftc/robotcore/external/Telemetry.html#getMsTransmissionInterval--"><code>transmission interval</code></a> expires.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>

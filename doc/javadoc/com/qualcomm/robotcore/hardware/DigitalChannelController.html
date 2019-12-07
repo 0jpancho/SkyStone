@@ -169,7 +169,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannelController.html#getDigitalChannelState-int-">getDigitalChannelState</a></span>(int&nbsp;channel)</code>
-<div class="block">Get the state of a digital channel
+<div class="block">Get the powerState of a digital channel
  If it's in OUTPUT mode, this will return the output bit.</div>
 </td>
 </tr>
@@ -198,8 +198,8 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/HardwareDevice.html
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannelController.html#setDigitalChannelState-int-boolean-">setDigitalChannelState</a></span>(int&nbsp;channel,
-                      boolean&nbsp;state)</code>
-<div class="block">Set the state of a digital channel</div>
+                      boolean&nbsp;powerState)</code>
+<div class="block">Set the powerState of a digital channel</div>
 </td>
 </tr>
 </table>
@@ -289,7 +289,7 @@ void&nbsp;setDigitalChannelMode(int&nbsp;channel,
 <li class="blockList">
 <h4>getDigitalChannelState</h4>
 <pre>boolean&nbsp;getDigitalChannelState(int&nbsp;channel)</pre>
-<div class="block">Get the state of a digital channel
+<div class="block">Get the powerState of a digital channel
  If it's in OUTPUT mode, this will return the output bit.
  If the channel is in INPUT mode, this will return the input bit.</div>
 <dl>
@@ -307,14 +307,14 @@ void&nbsp;setDigitalChannelMode(int&nbsp;channel,
 <li class="blockList">
 <h4>setDigitalChannelState</h4>
 <pre>void&nbsp;setDigitalChannelState(int&nbsp;channel,
-                            boolean&nbsp;state)</pre>
-<div class="block">Set the state of a digital channel
+                            boolean&nbsp;powerState)</pre>
+<div class="block">Set the powerState of a digital channel
  <p>
  The behavior of this method is undefined for digital channels in INPUT mode.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>channel</code> - channel</dd>
-<dd><code>state</code> - true to set; false to unset</dd>
+<dd><code>powerState</code> - true to set; false to unset</dd>
 </dl>
 </li>
 </ul>

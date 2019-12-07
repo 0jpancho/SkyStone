@@ -17,29 +17,34 @@ public class RunIntake implements Command {
 
     @Override
     public void start(){
-        intake.setState(Intake.State.STOP);
-        intake.setPivotPow(0);
+        intake.setPowerState(Intake.PowerState.STOP);
+        intake.setPivotState(Intake.PivotState.STOW);
     }
 
     @Override
     public void periodic(){
         if (operator.left_bumper){
-            intake.setState(Intake.State.INTAKE);
+            intake.setPowerState(Intake.PowerState.INTAKE);
         }
         else if (operator.right_bumper){
-            intake.setState(Intake.State.SPIT_OUT);
+            intake.setPowerState(Intake.PowerState.SPIT_OUT);
         }
         else{
-            intake.setState(Intake.State.STOP);
+            intake.setPowerState(Intake.PowerState.STOP);
         }
 
-        intake.setPivotPow(operator.left_stick_y);
+        if (operator.a){
+            intake.setPivotState(Intake.PivotState.DEPLOY);
+        }
+        else if (operator.y){
+            intake.setPivotState(Intake.PivotState.STOW);
+        }
     }
 
     @Override
     public void stop(){
-        intake.setState(Intake.State.STOP);
-        intake.setPivotPow(0);
+        intake.setPowerState(Intake.PowerState.STOP);
+        intake.setPivotState(Intake.PivotState.STOW);
     }
 
     @Override

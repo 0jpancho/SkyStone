@@ -5,39 +5,53 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
 
 public class Intake implements Subsystem{
 
     private HardwareMap hardwareMap;
-    private DcMotor left, right, pivot;
+    private DcMotor left, right;
+    private Servo pivotL, pivotR;
 
-    private double pivotPower = 0;
-    private State state = State.STOP;
+    private PivotState pivotState = PivotState.STOW;
+    private PowerState powerState = PowerState.STOP;
+
 
     public Intake(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
     }
 
-    public enum State{
+    public enum PowerState {
         INTAKE(1.0),
         SPIT_OUT(-0.6),
         STOP(0.0);
 
         private final double power;
 
-        State(double power){
+        PowerState(double power){
             this.power = power;
         }
     }
 
-    public void setState(State state){
-        this.state = state;
+    public enum PivotState {
+        STOW(0.0),
+        DEPLOY(1.0);
+
+        private final double postion;
+
+        PivotState(double position){
+            this.postion = position;
+        }
     }
 
-    public void setPivotPow(double pivotPower){
-        this.pivotPower = pivotPower;
+    public void setPowerState(PowerState powerState){
+        this.powerState = powerState;
+    }
+
+    public void setPivotState(PivotState pivotState){
+        this.pivotState = pivotState;
     }
 
     @Override
@@ -50,15 +64,18 @@ public class Intake implements Subsystem{
 
         right.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        this.pivot = hardwareMap.get(DcMotorEx.class, HardwareKeys.PIVOT_NAME);
-        pivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        pivotL = hardwareMap.servo.get("pivotL");
+        pivotR = hardwareMap.servo.get("pivotR");
+
+        pivotR.setDirection(Servo.Direction.REVERSE);
     }
 
     @Override
     public void periodic(){
-        left.setPower(state.power);
-        right.setPower(state.power);
+        left.setPower(powerState.power);
+        right.setPower(powerState.power);
 
-        pivot.setPower(pivotPower);
+        pivotL.setPosition(pivotState.postion);
+        pivotR.setPosition(pivotState.postion);
     }
 }

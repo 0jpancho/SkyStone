@@ -209,7 +209,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannelContr
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/DeviceInterfaceModule.html#setLED-int-boolean-">setLED</a></span>(int&nbsp;channel,
-      boolean&nbsp;state)</code>
+      boolean&nbsp;powerState)</code>
 <div class="block">Turn on or off a particular LED</div>
 </td>
 </tr>
@@ -278,7 +278,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannelContr
 <h4>getDigitalInputStateByte</h4>
 <pre>int&nbsp;getDigitalInputStateByte()</pre>
 <div class="block">A byte containing the current logic levels present in the D7-D0 channel pins.
- If a particular pin is in output mode, the current output state will be reported.</div>
+ If a particular pin is in output mode, the current output powerState will be reported.</div>
 </li>
 </ul>
 <a name="setDigitalIOControlByte-byte-">
@@ -321,7 +321,7 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannelContr
  will reflect the value of the corresponding field bit.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>input</code> - with output state of the digital pins.</dd>
+<dd><code>input</code> - with output powerState of the digital pins.</dd>
 </dl>
 </li>
 </ul>
@@ -362,12 +362,12 @@ extends <a href="../../../../com/qualcomm/robotcore/hardware/DigitalChannelContr
 <li class="blockList">
 <h4>setLED</h4>
 <pre>void&nbsp;setLED(int&nbsp;channel,
-            boolean&nbsp;state)</pre>
+            boolean&nbsp;powerState)</pre>
 <div class="block">Turn on or off a particular LED</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>channel</code> - - int indicating the ID of the LED.</dd>
-<dd><code>state</code> - - byte containing the desired setting.</dd>
+<dd><code>powerState</code> - - byte containing the desired setting.</dd>
 </dl>
 </li>
 </ul>

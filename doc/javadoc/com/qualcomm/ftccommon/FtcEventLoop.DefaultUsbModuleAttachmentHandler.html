@@ -221,7 +221,7 @@ implements <a href="../../../com/qualcomm/ftccommon/UsbModuleAttachmentHandler.h
 <div class="block">One of the hardware modules in the current robot configuration (such as a Modern Robotics
  DC Motor Controller, a Modern Robotics Legacy Module, etc) is now newly attached to the
  system (or so we think). The code in this method should deal with this event by, e.g.,
- putting the module into a correctly operating state.</div>
+ putting the module into a correctly operating powerState.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../com/qualcomm/ftccommon/UsbModuleAttachmentHandler.html#handleUsbModuleAttach-RobotUsbModule-">handleUsbModuleAttach</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/qualcomm/ftccommon/UsbModuleAttachmentHandler.html" title="interface in com.qualcomm.ftccommon">UsbModuleAttachmentHandler</a></code></dd>
@@ -246,7 +246,7 @@ implements <a href="../../../com/qualcomm/ftccommon/UsbModuleAttachmentHandler.h
 <div class="block">One of the hardware modules in the current robot configuration (such as a Modern Robotics
  DC Motor Controller, a Modern Robotics Legacy Module, etc) has been disconnected from the
  system. The code in this method should deal with this event by, e.g., putting the module in
- a state where it merely pretends to function.</div>
+ a powerState where it merely pretends to function.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../com/qualcomm/ftccommon/UsbModuleAttachmentHandler.html#handleUsbModuleDetach-RobotUsbModule-">handleUsbModuleDetach</a></code>&nbsp;in interface&nbsp;<code><a href="../../../com/qualcomm/ftccommon/UsbModuleAttachmentHandler.html" title="interface in com.qualcomm.ftccommon">UsbModuleAttachmentHandler</a></code></dd>

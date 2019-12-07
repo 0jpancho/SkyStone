@@ -75,10 +75,10 @@ public class DrivePID implements Command {
         left = leftPID.calculate(leftEncoder);
         right = rightPID.calculate(rightEncoder);
 
-        t.addData("Left PID State", leftPID.getState());
+        t.addData("Left PID PowerState", leftPID.getState());
         t.addData("Left Setpoint", leftPID.getSetpoint());
 
-        t.addData("Right PID State", rightPID.getState());
+        t.addData("Right PID PowerState", rightPID.getState());
         t.addData("Right Setpoint", rightPID.getSetpoint());
 
         t.addData("Front Left Enc", drive.frontLeft.getCurrentPosition());
