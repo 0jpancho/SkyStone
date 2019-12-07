@@ -39,10 +39,10 @@ public class Intake implements Subsystem{
         STOW(0.0),
         DEPLOY(1.0);
 
-        private final double postion;
+        private final double position;
 
         PivotState(double position){
-            this.postion = position;
+            this.position = position;
         }
     }
 
@@ -64,8 +64,8 @@ public class Intake implements Subsystem{
 
         right.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        pivotL = hardwareMap.servo.get("pivotL");
-        pivotR = hardwareMap.servo.get("pivotR");
+        pivotL = hardwareMap.servo.get(HardwareKeys.INTAKE_PIVOT_L_NAME);
+        pivotR = hardwareMap.servo.get(HardwareKeys.INTAKE_PIVOT_R_NAME);
 
         pivotR.setDirection(Servo.Direction.REVERSE);
     }
@@ -75,7 +75,7 @@ public class Intake implements Subsystem{
         left.setPower(powerState.power);
         right.setPower(powerState.power);
 
-        pivotL.setPosition(pivotState.postion);
-        pivotR.setPosition(pivotState.postion);
+        pivotL.setPosition(pivotState.position);
+        pivotR.setPosition(pivotState.position);
     }
 }

@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.robot.teleopcommands;
 import com.disnodeteam.dogecommander.Command;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 
@@ -16,6 +17,8 @@ public class ArcadeDrive implements Command {
     private double y = 0;
     private double x = 0;
     private double rot = 0;
+
+    private boolean toggleSpeed;
 
     public ArcadeDrive(Drive drive, Gamepad gamepad){
         this.drive = drive;
@@ -40,14 +43,25 @@ public class ArcadeDrive implements Command {
         double frontRightPower = y + x + rot;
         double backRightPower = y - x + rot;
 
-        double[] wheelPowers = {frontLeftPower, backLeftPower, frontRightPower, backRightPower};
+        if (driver.right_bumper){
+            if (toggleSpeed){
 
-        Arrays.sort(wheelPowers);
-        if (wheelPowers[3] > 1) {
-            frontLeftPower /= wheelPowers[3];
-            backLeftPower /= wheelPowers[3];
-            frontRightPower /= wheelPowers[3];
-            backRightPower /= wheelPowers[3];
+                frontLeftPower = Range.clip(frontLeftPower, -1, 1);
+                backLeftPower = Range.clip(backLeftPower, -1, 1);
+                frontRightPower = Range.clip(frontRightPower, -1, 1);
+                backRightPower = Range.clip(backRightPower, -1, 1);
+
+                toggleSpeed = false;
+            }
+        }
+
+        else if (!toggleSpeed){
+            frontLeftPower = Range.clip(frontLeftPower, -.5, 0.5);
+            backLeftPower = Range.clip(backLeftPower, -.5, 0.5);
+            frontRightPower = Range.clip(frontRightPower, -.5, 0.5);
+            backRightPower = Range.clip(backRightPower, -.5, 0.5);
+
+            toggleSpeed = true;
         }
 
         drive.setPower(frontLeftPower, backLeftPower, frontRightPower, backRightPower);
