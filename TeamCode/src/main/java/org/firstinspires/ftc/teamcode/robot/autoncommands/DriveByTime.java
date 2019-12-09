@@ -34,38 +34,41 @@ public class DriveByTime implements Command {
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
 
-        switch(direction){
+        while (elapsedTime.seconds() < duration){
+            switch(direction){
 
-            case FORWARD:
+                case FORWARD:
 
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(driveSpeed, driveSpeed, driveSpeed, driveSpeed);
-                }
+                    while (elapsedTime.seconds() < duration){
+                        drive.setPower(driveSpeed, driveSpeed, driveSpeed, driveSpeed);
+                    }
 
-                break;
+                    break;
 
-            case BACKWARD:
+                case BACKWARD:
 
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(-driveSpeed, -driveSpeed, -driveSpeed, -driveSpeed);
-                }
+                    while (elapsedTime.seconds() < duration){
+                        drive.setPower(-driveSpeed, -driveSpeed, -driveSpeed, -driveSpeed);
+                    }
 
-                break;
+                    break;
 
-            case LEFT:
+                case LEFT:
 
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
-                }
+                    while (elapsedTime.seconds() < duration){
+                        drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
+                    }
 
-                break;
-            case RIGHT:
+                    break;
+                case RIGHT:
 
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
-                }
+                    while (elapsedTime.seconds() < duration){
+                        drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
+                    }
 
-                break;
+                    break;
+            }
+            drive.setPower(0, 0, 0, 0);
         }
     }
 

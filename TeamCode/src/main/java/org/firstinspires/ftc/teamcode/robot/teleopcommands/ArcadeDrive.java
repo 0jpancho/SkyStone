@@ -7,8 +7,6 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 
-import java.util.Arrays;
-
 public class ArcadeDrive implements Command {
 
     private Drive drive;
@@ -43,26 +41,10 @@ public class ArcadeDrive implements Command {
         double frontRightPower = y + x + rot;
         double backRightPower = y - x + rot;
 
-        if (driver.right_bumper){
-            if (toggleSpeed){
-
-                frontLeftPower = Range.clip(frontLeftPower, -1, 1);
-                backLeftPower = Range.clip(backLeftPower, -1, 1);
-                frontRightPower = Range.clip(frontRightPower, -1, 1);
-                backRightPower = Range.clip(backRightPower, -1, 1);
-
-                toggleSpeed = false;
-            }
-        }
-
-        else if (!toggleSpeed){
-            frontLeftPower = Range.clip(frontLeftPower, -.5, 0.5);
-            backLeftPower = Range.clip(backLeftPower, -.5, 0.5);
-            frontRightPower = Range.clip(frontRightPower, -.5, 0.5);
-            backRightPower = Range.clip(backRightPower, -.5, 0.5);
-
-            toggleSpeed = true;
-        }
+        frontLeftPower = Range.clip(frontLeftPower, -1, 1);
+        backLeftPower = Range.clip(backLeftPower, -1, 1);
+        frontRightPower = Range.clip(frontRightPower, -1, 1);
+        backRightPower = Range.clip(backRightPower, -1, 1);
 
         drive.setPower(frontLeftPower, backLeftPower, frontRightPower, backRightPower);
     }

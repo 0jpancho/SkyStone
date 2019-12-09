@@ -4,6 +4,8 @@ import com.disnodeteam.dogecommander.Subsystem;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
+
 public class Lift implements Subsystem {
 
     private HardwareMap hardwareMap;
@@ -16,7 +18,7 @@ public class Lift implements Subsystem {
 
     @Override
     public void initHardware(){
-        lift = hardwareMap.dcMotor.get("lift");
+        lift = hardwareMap.dcMotor.get(HardwareKeys.LIFT_NAME);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
