@@ -28,27 +28,20 @@ public class RunGripper implements Command {
     public void periodic(){
 
         if (operator.x){
-            if (togglePivot){
-                gripper.setPivotState(Gripper.PivotState.STOW);
-                togglePivot = false;
-            }
+            gripper.setPivotState(Gripper.PivotState.STOW);
         }
 
-        else if (!togglePivot){
+        else if (operator.b){
             gripper.setPivotState(Gripper.PivotState.DEPLOY);
-            togglePivot = true;
         }
 
-        if(operator.b){
-            if(toggleGripper){
-                gripper.setGripperState(Gripper.GripperState.GRIP);
-                toggleGripper = false;
-            }
+        if(operator.a){
+            gripper.setGripperState(Gripper.GripperState.GRIP);
         }
 
-        else if (!toggleGripper){
+        else if (operator.y){
             gripper.setGripperState(Gripper.GripperState.RELEASE);
-            toggleGripper = true;
+
         }
     }
 

@@ -18,7 +18,6 @@ public class Intake implements Subsystem{
     private PivotState pivotState = PivotState.STOW;
     private PowerState powerState = PowerState.STOP;
 
-
     public Intake(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
     }

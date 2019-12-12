@@ -12,8 +12,8 @@ public class Gripper implements Subsystem {
 
     private Servo pivotL, pivotR, gripper;
 
-    private PivotState pivotState;
-    private GripperState gripperState;
+    private PivotState pivotState = PivotState.STOW;
+    private GripperState gripperState = GripperState.RELEASE;
 
     public Gripper(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
@@ -23,10 +23,10 @@ public class Gripper implements Subsystem {
         STOW(0.0),
         DEPLOY(1.0);
 
-        private final double postion;
+        private final double position;
 
         PivotState(double position){
-            this.postion = position;
+            this.position = position;
         }
     }
 
@@ -41,12 +41,12 @@ public class Gripper implements Subsystem {
         }
     }
 
-    public void setPivotState(PivotState state){
-        this.pivotState = state;
+    public void setPivotState(PivotState pivotState){
+        this.pivotState = pivotState;
     }
 
-    public void setGripperState(GripperState state){
-        this.gripperState = state;
+    public void setGripperState(GripperState gripperState){
+        this.gripperState = gripperState;
     }
 
     @Override
@@ -61,8 +61,8 @@ public class Gripper implements Subsystem {
 
     @Override
     public void periodic(){
-        pivotL.setPosition(pivotState.postion);
-        pivotR.setPosition(pivotState.postion);
+        pivotL.setPosition(pivotState.position);
+        pivotR.setPosition(pivotState.position);
 
         gripper.setPosition(gripperState.position);
     }
