@@ -15,8 +15,11 @@ import org.opencv.imgproc.Imgproc;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
-
-public class CustomSkystoneDetector extends DogeCVDetector {
+/*
+ * Skystone Detector acquired from:
+ * https://github.com/ftc9881/skystone-2019/blob/master/ftc-app/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/auto/vision/CustomSkystoneDetector.java
+ */
+public class SkystoneDetector extends DogeCVDetector {
     public DogeCVColorFilter blackFilter;
     public DogeCVColorFilter yellowFilter;
     public int blobDistanceThreshold;
@@ -32,7 +35,7 @@ public class CustomSkystoneDetector extends DogeCVDetector {
     private Mat hierarchy  = new Mat();
 
 
-    public CustomSkystoneDetector() {
+    public SkystoneDetector() {
         detectorName = "Skystone Detector";
     }
 
@@ -205,4 +208,3 @@ public class CustomSkystoneDetector extends DogeCVDetector {
     }
 
 }
-

@@ -1,8 +1,7 @@
 package org.firstinspires.ftc.teamcode.robot.autoncommands;
 
 import com.disnodeteam.dogecommander.Command;
-import com.disnodeteam.dogecommander.Subsystem;
-import com.disnodeteam.dogecv.detectors.skystone.SkystoneDetector;
+import org.firstinspires.ftc.teamcode.util.SkystoneDetector;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -40,8 +39,8 @@ public class AcquireSkyStone implements Command {
 
     @Override
     public void start() {
-        telemetry.addData("Stone Position X", detector.getScreenPosition().x);
-        telemetry.addData("Stone Position Y", detector.getScreenPosition().y);
+        //telemetry.addData("Stone Position X", detector.
+        //telemetry.addData("Stone Position Y", detector.getScreenPosition().y);
         telemetry.addData("Frame Count", phoneCam.getFrameCount());
         telemetry.addData("FPS", String.format(Locale.US, "%.2f", phoneCam.getFps()));
         telemetry.addData("Total frame time ms", phoneCam.getTotalFrameTimeMs());

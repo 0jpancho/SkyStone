@@ -1,9 +1,13 @@
 package org.firstinspires.ftc.teamcode.seasonpackage.Calibration;
 
+import android.content.Context;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.robot.Robot;
 
-import org.firstinspires.ftc.teamcode.util.CustomSkystoneDetector;
+import org.firstinspires.ftc.teamcode.util.SkystoneDetector;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
@@ -14,7 +18,7 @@ import java.util.Locale;
 public class SkystoneTest extends LinearOpMode {
 
     private OpenCvCamera phoneCam;
-    private CustomSkystoneDetector detector;
+    private SkystoneDetector detector;
 
     @Override
     public void runOpMode() {
@@ -42,8 +46,10 @@ public class SkystoneTest extends LinearOpMode {
          * of a frame from the camera. Note that switching pipelines on-the-fly
          * (while a streaming session is in flight) *IS* supported.
          */
-        detector = new CustomSkystoneDetector();
+        detector = new SkystoneDetector();
+        detector.useDefaults();
         phoneCam.setPipeline(detector);
+
 
         /*
          * Tell the camera to start streaming images to us! Note that you must make sure
@@ -76,6 +82,7 @@ public class SkystoneTest extends LinearOpMode {
             telemetry.addData("Pipeline time ms", phoneCam.getPipelineTimeMs());
             telemetry.addData("Overhead time ms", phoneCam.getOverheadTimeMs());
             telemetry.addData("Theoretical max FPS", phoneCam.getCurrentPipelineMaxFps());
+            telemetry.addData("Is found?", detector.isDetected());
             telemetry.update();
 
             /*

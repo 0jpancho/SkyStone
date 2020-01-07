@@ -36,6 +36,6 @@ public class DogeAutonTest extends LinearOpMode implements DogeOpMode {
 
         robot.runCommand(new DrivePID(drive, 0.5, 0.1, 0, 0, 12, 0, Constants.autoDrive, telemetry));
 
-        robot.runCommand(new TurnPID(drive, 0.25, 0.1, 0,0, 90, imu, 5, Constants.autoTurn, telemetry));
+        robot.runCommand(new TurnPID(drive, 0.5, 0.1, 0,0, 90, imu, 5, Constants.autoTurn, telemetry));
     }
 }
