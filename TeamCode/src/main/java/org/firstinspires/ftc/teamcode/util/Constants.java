@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 public class Constants {
 
-        private static final double wheelDiameter = 4;
+        private static final double wheelDiameter = 4; //inches
 
         private static final double  wheelCircumference = wheelDiameter * Math.PI;
 

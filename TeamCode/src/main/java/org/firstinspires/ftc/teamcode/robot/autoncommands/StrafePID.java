@@ -47,8 +47,8 @@ public class StrafePID implements Command {
         this.delay = delay;
         this.coefficients = coefficients;
 
-        leftPID = new SynchronousPID(p, i, d);
-        rightPID = new SynchronousPID(p, i, d);
+        leftPID = new SynchronousPID(this.p, this.i, this.d);
+        rightPID = new SynchronousPID(this.p, this.i, this.d);
 
         targetPulses = inches * Constants.countsPerInch();
 

@@ -46,7 +46,7 @@ public class TurnPID implements Command {
         this.i = i;
         this.d = d;
 
-        turnPID = new SynchronousPID(p, i, d);
+        turnPID = new SynchronousPID(this.p, this.i, this.d);
 
         this.coefficients = coefficients;
 
@@ -67,12 +67,15 @@ public class TurnPID implements Command {
         heading = imu.getHeading();
         turnFactor = turnPID.calculateGivenError(angle - imu.getHeading());
 
+        /*
         if (turnFactor > -.07 && turnFactor < 0) {
             turnFactor = -.07;
         }
         if (turnFactor < .07 && turnFactor > 0) {
             turnFactor = .07;
         }
+        */
+
 
         drive.setStrDrive(turnFactor, -turnFactor);
 
