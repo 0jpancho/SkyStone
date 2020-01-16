@@ -6,16 +6,17 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
 
-public class Gripper implements Subsystem {
+public class Manipulator implements Subsystem {
 
     private HardwareMap hardwareMap;
 
-    private Servo pivotL, pivotR, gripper;
+    private Servo pivotL, pivotR, gripper, inverter;
 
-    private PivotState pivotState = PivotState.STOW;
-    private GripperState gripperState = GripperState.RELEASE;
+    public PivotState pivotState = PivotState.STOW;
+    public InverterState inverterState = InverterState.STOW;
+    public GripperState gripperState = GripperState.RELEASE;
 
-    public Gripper(HardwareMap hardwareMap){
+    public Manipulator(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
     }
 
@@ -41,12 +42,27 @@ public class Gripper implements Subsystem {
         }
     }
 
+    public enum InverterState {
+        STOW(0.0),
+        FLIP(1.0);
+
+        private final double position;
+
+        InverterState(double position){
+            this.position = position;
+        }
+    }
+
     public void setPivotState(PivotState pivotState){
         this.pivotState = pivotState;
     }
 
     public void setGripperState(GripperState gripperState){
         this.gripperState = gripperState;
+    }
+
+    public void setInverterState(InverterState inverterState){
+        this.inverterState = inverterState;
     }
 
     @Override
@@ -56,6 +72,7 @@ public class Gripper implements Subsystem {
 
         pivotR.setDirection(Servo.Direction.REVERSE);
 
+        inverter = hardwareMap.servo.get(HardwareKeys.INVERTER);
         gripper = hardwareMap.servo.get(HardwareKeys.GRIPPER_ARM);
     }
 
@@ -65,5 +82,6 @@ public class Gripper implements Subsystem {
         pivotR.setPosition(pivotState.position);
 
         gripper.setPosition(gripperState.position);
+        inverter.setPosition(inverterState.position);
     }
 }

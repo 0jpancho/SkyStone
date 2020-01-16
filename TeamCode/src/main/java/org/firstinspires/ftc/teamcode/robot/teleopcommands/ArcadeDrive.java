@@ -32,6 +32,13 @@ public class ArcadeDrive implements Command {
     @Override
     public void periodic(){
 
+        if (driver.right_bumper){
+            drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        }
+        else{
+            drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        }
+
         forward = driver.left_stick_y;
         turn = driver.left_stick_x;
         rot = driver.right_stick_x;

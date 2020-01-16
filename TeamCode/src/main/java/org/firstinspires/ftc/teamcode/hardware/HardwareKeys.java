@@ -20,10 +20,11 @@ public class HardwareKeys {
     //Lift Motor
     public static final String LIFT_NAME = "lift";
 
-    //Gripper Servos
+    //Manipulator Servos
     public static final String GRIPPER_PIVOT_L = "gripperPivotL";
     public static final String GRIPPER_PIVOT_R = "gripperPivotR";
     public static final String GRIPPER_ARM = "gripperArm";
+    public static final String INVERTER = "inverter";
 
 
 }

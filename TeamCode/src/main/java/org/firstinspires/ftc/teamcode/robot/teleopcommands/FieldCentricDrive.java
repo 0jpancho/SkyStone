@@ -38,6 +38,17 @@ public class FieldCentricDrive implements Command {
     @Override
     public void periodic(){
 
+        double lTrigger = driver.left_trigger;
+        double rTrigger = driver.right_trigger;
+
+        if (lTrigger > .3){
+            drive.setPower(-lTrigger, lTrigger, lTrigger, -lTrigger);
+        }
+
+        if (rTrigger > .3){
+            drive.setPower(rTrigger, -rTrigger, -rTrigger, rTrigger);
+        }
+
         forward = -driver.left_stick_y;
         turn = driver.left_stick_x;
         rot = driver.right_stick_x;
@@ -53,6 +64,7 @@ public class FieldCentricDrive implements Command {
         double BRPow;
 
         angles = imu.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
         if (angles.firstAngle < 0){
             angles.firstAngle += 360;
         }

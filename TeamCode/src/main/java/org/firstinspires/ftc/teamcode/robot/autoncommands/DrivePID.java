@@ -53,7 +53,7 @@ public class DrivePID implements Command {
 
         targetPulses = inches * Constants.countsPerInch();
 
-        //drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
     }
 
@@ -103,6 +103,6 @@ public class DrivePID implements Command {
 
     @Override
     public boolean isCompleted(){
-        return (Math.abs(leftEncoder - targetPulses) < 25) || !(Math.abs(rightEncoder - targetPulses) < 25);
+        return (leftPID.onTarget(25) || rightPID.onTarget(25));
     }
 }

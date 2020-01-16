@@ -8,15 +8,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
-import org.firstinspires.ftc.teamcode.robot.subsystems.Gripper;
 import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
-import org.firstinspires.ftc.teamcode.robot.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.robot.teleopcommands.ArcadeDrive;
-import org.firstinspires.ftc.teamcode.robot.teleopcommands.FieldCentricDrive;
-import org.firstinspires.ftc.teamcode.robot.teleopcommands.PowerLift;
-import org.firstinspires.ftc.teamcode.robot.teleopcommands.RunGripper;
 import org.firstinspires.ftc.teamcode.robot.teleopcommands.RunIntake;
 
 @TeleOp(name = "Teleop", group = "Teleop")
@@ -41,7 +36,7 @@ public class MainTeleop extends LinearOpMode implements DogeOpMode {
         Drive drive = new Drive(hardwareMap);
         Intake intake = new Intake(hardwareMap);
         //Lift lift = new Lift(hardwareMap);
-        //Gripper gripper = new Gripper(hardwareMap);
+        //Manipulator gripper = new Manipulator(hardwareMap);
         IMU imu = new IMU(hardwareMap, telemetry);
 
         robot.registerSubsystem(drive);
@@ -60,7 +55,7 @@ public class MainTeleop extends LinearOpMode implements DogeOpMode {
 
                 new RunIntake(intake, gamepad2)
                 //new PowerLift(lift, gamepad2, 0.5)
-                //new RunGripper(gripper, gamepad2)
+                //new RunManipulator(gripper, gamepad2)
         );
 
         if (gamepad2.x)

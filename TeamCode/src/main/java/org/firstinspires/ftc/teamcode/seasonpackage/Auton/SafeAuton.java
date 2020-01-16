@@ -6,10 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.robot.autoncommands.DriveByTime;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
-import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
-import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
 
 @Autonomous(name = "Safe Auto")
 public class SafeAuton extends LinearOpMode implements DogeOpMode {
@@ -38,11 +35,8 @@ public class SafeAuton extends LinearOpMode implements DogeOpMode {
             while (elapsedTime.seconds() < duration){
                 drive.setPower(0.75, 0.75, 0.75, 0.75);
             }
-
-            drive.setPower(0, 0, 0, 0);
-
-
         }
-    }
+        drive.setPower(0, 0, 0, 0);
 
+    }
 }

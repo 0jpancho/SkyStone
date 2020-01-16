@@ -47,8 +47,6 @@ public class Drive implements Subsystem{
 
         leftStrafePair = new MotorPair(frontLeft, backRight);
         rightStrafePair = new MotorPair(frontRight, backLeft);
-
-        brakeMode(true);
     }
 
     @Override
@@ -68,22 +66,12 @@ public class Drive implements Subsystem{
         backRight.setPIDFCoefficients(runMode, coefficients);
     }
 
-    public void brakeMode(boolean isBreak){
-        if(isBreak){
-            frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    public void setZeroPowerBehavior(DcMotor.ZeroPowerBehavior zeroPowerBehavior){
+        frontLeft.setZeroPowerBehavior(zeroPowerBehavior);
+        backLeft.setZeroPowerBehavior(zeroPowerBehavior);
 
-            frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            backRight .setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        }
-
-        else{
-            frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-
-            frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-            backRight .setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-        }
+        frontRight.setZeroPowerBehavior(zeroPowerBehavior);
+        backRight .setZeroPowerBehavior(zeroPowerBehavior);
     }
 
     public void setRunMode(DcMotor.RunMode runMode){

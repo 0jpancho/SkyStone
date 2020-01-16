@@ -25,8 +25,8 @@ public class DriveByTime implements Command {
     public enum DirectionState{
         FORWARD,
         BACKWARD,
-        LEFT,
-        RIGHT
+        STRAFE_LEFT,
+        STRAFE_RIGHT
     }
 
     @Override
@@ -53,14 +53,14 @@ public class DriveByTime implements Command {
 
                     break;
 
-                case LEFT:
+                case STRAFE_LEFT:
 
                     while (elapsedTime.seconds() < duration){
                         drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
                     }
 
                     break;
-                case RIGHT:
+                case STRAFE_RIGHT:
 
                     while (elapsedTime.seconds() < duration){
                         drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
