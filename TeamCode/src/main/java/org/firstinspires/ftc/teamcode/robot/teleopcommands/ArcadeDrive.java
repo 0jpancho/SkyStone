@@ -12,8 +12,8 @@ public class ArcadeDrive implements Command {
     private Drive drive;
     private Gamepad driver;
 
-    private double y = 0;
-    private double x = 0;
+    private double forward = 0;
+    private double turn = 0;
     private double rot = 0;
 
     private boolean toggleSpeed;
@@ -32,14 +32,14 @@ public class ArcadeDrive implements Command {
     @Override
     public void periodic(){
 
-        y = driver.left_stick_y;
-        x = driver.left_stick_x;
+        forward = driver.left_stick_y;
+        turn = driver.left_stick_x;
         rot = driver.right_stick_x;
 
-        double frontLeftPower = y - x - rot;
-        double backLeftPower =  y + x - rot;
-        double frontRightPower = y + x + rot;
-        double backRightPower = y - x + rot;
+        double frontLeftPower = forward - turn - rot;
+        double backLeftPower =  forward + turn - rot;
+        double frontRightPower = forward + turn + rot;
+        double backRightPower = forward - turn + rot;
 
         frontLeftPower = Range.clip(frontLeftPower, -1, 1);
         backLeftPower = Range.clip(backLeftPower, -1, 1);

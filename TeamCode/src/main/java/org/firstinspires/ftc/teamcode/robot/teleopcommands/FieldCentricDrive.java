@@ -5,6 +5,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 import org.firstinspires.ftc.teamcode.util.Constants;
@@ -13,9 +17,10 @@ public class FieldCentricDrive implements Command {
 
     private Drive drive;
     private IMU imu;
+    private Orientation angles;
     private Gamepad driver;
 
-    private double y, x, rot;
+    private double forward, turn, rot;
 
     public FieldCentricDrive(Drive drive, IMU imu, Gamepad gamepad){
         this.drive = drive;
@@ -33,8 +38,8 @@ public class FieldCentricDrive implements Command {
     @Override
     public void periodic(){
 
-        y = -driver.left_stick_y;
-        x = driver.left_stick_x;
+        forward = -driver.left_stick_y;
+        turn = driver.left_stick_x;
         rot = driver.right_stick_x;
 
         double rawFLPow;
@@ -47,19 +52,24 @@ public class FieldCentricDrive implements Command {
         double FRPow;
         double BRPow;
 
-        double forward;
-        double strafe;
+        angles = imu.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        if (angles.firstAngle < 0){
+            angles.firstAngle += 360;
+        }
 
-        double degrees = imu.getHeading();
-        double rads = degrees * (Constants.pi * 180);
+        double heading = Math.toRadians(angles.firstAngle);
+        double sin = Math.sin(heading);
+        double cos = Math.cos(heading);
 
-        forward = y * Math.cos(rads) + x * Math.sin(rads);
-        strafe = -y * Math.sin(rads) + x * Math.cos(rads);
+        double temp = forward * cos - turn * sin;
+        turn = forward * sin - turn * cos;
+        forward = temp;
 
-        rawFLPow = forward - strafe - rot;
-        rawBLPow = forward + strafe - rot;
-        rawFRPow = forward + strafe + rot;
-        rawBRPow = forward - strafe + rot;
+
+        rawFLPow = forward + turn + rot;
+        rawBLPow = forward + turn - rot;
+        rawFRPow = forward - turn - rot;
+        rawBRPow = forward - turn + rot;
 
         FLPow = Range.clip(rawFLPow, -1, 1);
         BLPow = Range.clip(rawBLPow, -1, 1);

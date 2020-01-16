@@ -14,8 +14,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 public class IMU implements Subsystem {
 
-    private BNO055IMU imu;
-    private Orientation angles;
+    public BNO055IMU imu;
+    public Orientation angles;
 
     private HardwareMap hardwareMap;
     private Telemetry t;
@@ -23,32 +23,30 @@ public class IMU implements Subsystem {
     private float headingOffset;
 
 
-    public IMU(HardwareMap hardwareMap, Telemetry telemetry){
+    public IMU(HardwareMap hardwareMap, Telemetry telemetry) {
         this.hardwareMap = hardwareMap;
         t = telemetry;
     }
 
     @Override
-    public void initHardware(){
+    public void initHardware() {
 
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        parameters.loggingEnabled      = false;
-        parameters.loggingTag          = "RevIMU";
+        parameters.loggingEnabled = false;
+        parameters.loggingTag = "RevIMU";
         parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         imu.initialize(parameters);
 
         zeroHeading();
-
-        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
 
     @Override
-    public void periodic(){
+    public void periodic() {
         t.addData("IMU Calibrated?", isCalibrated());
         t.addData("Normalized Heading", getHeading());
         t.addData("Raw Z Axis", imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES));
@@ -64,14 +62,17 @@ public class IMU implements Subsystem {
     }
 
     public static double normalize360(double angle) {
-        while(angle >= 360) {
+
+        /*while(angle >= 360) {
             angle -= 360;
         }
         while(angle < 0) {
             angle += 360;
         }
+        */
         return angle;
     }
+
 
     public static double normalize180(double angle) {
         while(angle > 180) {
