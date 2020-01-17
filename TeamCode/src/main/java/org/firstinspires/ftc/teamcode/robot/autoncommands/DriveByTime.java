@@ -34,43 +34,43 @@ public class DriveByTime implements Command {
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
 
-        while (elapsedTime.seconds() < duration){
-            switch(direction){
 
-                case FORWARD:
+        switch(direction){
 
-                    while (elapsedTime.seconds() < duration){
-                        drive.setPower(driveSpeed, driveSpeed, driveSpeed, driveSpeed);
-                    }
+            case FORWARD:
 
-                    break;
+                while (elapsedTime.seconds() < duration){
+                    drive.setPower(driveSpeed, driveSpeed, driveSpeed, driveSpeed);
+                }
 
-                case BACKWARD:
+                break;
 
-                    while (elapsedTime.seconds() < duration){
-                        drive.setPower(-driveSpeed, -driveSpeed, -driveSpeed, -driveSpeed);
-                    }
+            case BACKWARD:
 
-                    break;
+                while (elapsedTime.seconds() < duration){
+                    drive.setPower(-driveSpeed, -driveSpeed, -driveSpeed, -driveSpeed);
+                }
 
-                case STRAFE_LEFT:
+                break;
 
-                    while (elapsedTime.seconds() < duration){
-                        drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
-                    }
+            case STRAFE_LEFT:
 
-                    break;
-                case STRAFE_RIGHT:
+                while (elapsedTime.seconds() < duration){
+                    drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
+                }
 
-                    while (elapsedTime.seconds() < duration){
-                        drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
-                    }
+                break;
+            case STRAFE_RIGHT:
 
-                    break;
-            }
-            drive.setPower(0, 0, 0, 0);
+                while (elapsedTime.seconds() < duration){
+                    drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
+                }
+
+                break;
         }
+        drive.setPower(0, 0, 0, 0);
     }
+
 
     @Override
     public void periodic(){
