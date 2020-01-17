@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.seasonpackage.Calibration;
 
 import com.disnodeteam.dogecommander.DogeCommander;
 import com.disnodeteam.dogecommander.DogeOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.robot.teleopcommands.PowerLift;
 import org.firstinspires.ftc.teamcode.robot.teleopcommands.RunManipulator;
 
 @TeleOp(name = "Subsystems Test", group = "Subsystems Test")
+@Disabled
 public class SubsystemTest extends LinearOpMode implements DogeOpMode {
 
     @Override

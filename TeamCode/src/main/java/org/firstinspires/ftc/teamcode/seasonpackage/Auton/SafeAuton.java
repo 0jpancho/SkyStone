@@ -35,8 +35,9 @@ public class SafeAuton extends LinearOpMode implements DogeOpMode {
             while (elapsedTime.seconds() < duration){
                 drive.setPower(0.75, 0.75, 0.75, 0.75);
             }
+            drive.setPower(0, 0, 0, 0);
         }
-        drive.setPower(0, 0, 0, 0);
+
 
     }
 }

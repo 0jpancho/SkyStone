@@ -14,6 +14,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.util.Constants;
 
 @Autonomous(name = "Doge Auton Test", group = "Autonomous")
+@Disabled
 public class PIDAutonTest extends LinearOpMode implements DogeOpMode {
 
     @Override
