@@ -10,7 +10,7 @@ public class Manipulator implements Subsystem {
 
     private HardwareMap hardwareMap;
 
-    private Servo pivotL, pivotR, gripper, inverter;
+    private Servo pivotL, pivotR, inverter, gripper;
 
     public PivotState pivotState = PivotState.STOW;
     public InverterState inverterState = InverterState.STOW;
@@ -31,17 +31,6 @@ public class Manipulator implements Subsystem {
         }
     }
 
-    public enum GripperState{
-        GRIP(1.0),
-        RELEASE(0.0);
-
-        private final double position;
-
-        GripperState(double position){
-            this.position = position;
-        }
-    }
-
     public enum InverterState {
         STOW(0.0),
         FLIP(1.0);
@@ -53,16 +42,27 @@ public class Manipulator implements Subsystem {
         }
     }
 
+    public enum GripperState{
+        GRIP(1.0),
+        RELEASE(0.0);
+
+        private final double position;
+
+        GripperState(double position){
+            this.position = position;
+        }
+    }
+
     public void setPivotState(PivotState pivotState){
         this.pivotState = pivotState;
     }
 
-    public void setGripperState(GripperState gripperState){
-        this.gripperState = gripperState;
-    }
-
     public void setInverterState(InverterState inverterState){
         this.inverterState = inverterState;
+    }
+
+    public void setGripperState(GripperState gripperState){
+        this.gripperState = gripperState;
     }
 
     @Override
@@ -81,7 +81,8 @@ public class Manipulator implements Subsystem {
         pivotL.setPosition(pivotState.position);
         pivotR.setPosition(pivotState.position);
 
-        gripper.setPosition(gripperState.position);
         inverter.setPosition(inverterState.position);
+        gripper.setPosition(gripperState.position);
+
     }
 }

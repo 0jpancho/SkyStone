@@ -30,7 +30,7 @@ public class FieldCentricDrive implements Command {
     @Override
     public void start(){
         drive.setPower(0,0,0,0);
-        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
 

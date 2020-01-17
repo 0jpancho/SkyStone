@@ -16,8 +16,6 @@ public class ArcadeDrive implements Command {
     private double turn = 0;
     private double rot = 0;
 
-    private boolean toggleSpeed;
-
     public ArcadeDrive(Drive drive, Gamepad gamepad){
         this.drive = drive;
         this.driver = gamepad;
@@ -26,7 +24,7 @@ public class ArcadeDrive implements Command {
     @Override
     public void start(){
         drive.setPower(0,0,0,0);
-        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     @Override

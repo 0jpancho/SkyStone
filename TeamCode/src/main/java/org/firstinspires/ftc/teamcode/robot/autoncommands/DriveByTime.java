@@ -33,48 +33,28 @@ public class DriveByTime implements Command {
     public void start(){
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
+    }
 
-
-        switch(direction){
+    @Override
+    public void periodic() {
+        switch (direction) {
 
             case FORWARD:
-
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(driveSpeed, driveSpeed, driveSpeed, driveSpeed);
-                }
-
+                drive.setPower(driveSpeed, driveSpeed, driveSpeed, driveSpeed);
                 break;
 
             case BACKWARD:
-
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(-driveSpeed, -driveSpeed, -driveSpeed, -driveSpeed);
-                }
-
+                drive.setPower(-driveSpeed, -driveSpeed, -driveSpeed, -driveSpeed);
                 break;
 
             case STRAFE_LEFT:
-
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
-                }
-
+                drive.setPower(-driveSpeed, driveSpeed, driveSpeed, -driveSpeed);
                 break;
+
             case STRAFE_RIGHT:
-
-                while (elapsedTime.seconds() < duration){
-                    drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
-                }
-
+                drive.setPower(driveSpeed, -driveSpeed, -driveSpeed, driveSpeed);
                 break;
         }
-        drive.setPower(0, 0, 0, 0);
-    }
-
-
-    @Override
-    public void periodic(){
-
     }
 
     @Override

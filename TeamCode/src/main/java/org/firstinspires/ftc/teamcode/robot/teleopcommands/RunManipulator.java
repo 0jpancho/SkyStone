@@ -38,7 +38,9 @@ public class RunManipulator implements Command {
             }
             pivotToggle = true;
         }
-        else if(!operator.a) pivotToggle = false;
+        else if(!operator.a){
+            pivotToggle = false;
+        }
 
         if(operator.a && !inverterToggle){
             if(manipulator.inverterState.equals(Manipulator.InverterState.STOW)){
