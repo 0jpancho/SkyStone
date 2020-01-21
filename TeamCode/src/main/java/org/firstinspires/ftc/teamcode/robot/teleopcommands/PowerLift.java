@@ -8,23 +8,23 @@ import org.firstinspires.ftc.teamcode.robot.subsystems.Lift;
 public class PowerLift implements Command {
 
     private Lift lift;
-    private Gamepad gamepad;
+    private Gamepad operator;
     private double multiplier;
 
-    public PowerLift(Lift lift, Gamepad gamepad, double multiplier){
+    public PowerLift(Lift lift, Gamepad operator, double multiplier){
         this.lift = lift;
-        this.gamepad = gamepad;
+        this.operator = operator;
         this.multiplier = multiplier;
     }
 
     @Override
     public void start(){
-        lift.setLiftPower(0);
+
     }
 
     @Override
     public void periodic(){
-        lift.setLiftPower(gamepad.right_stick_y * multiplier);
+        lift.setLiftPower(operator.left_stick_y * multiplier);
     }
 
     @Override

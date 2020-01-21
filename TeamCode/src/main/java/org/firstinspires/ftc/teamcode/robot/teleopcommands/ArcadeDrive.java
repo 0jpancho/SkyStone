@@ -13,7 +13,7 @@ public class ArcadeDrive implements Command {
     private Gamepad driver;
 
     private double forward = 0;
-    private double turn = 0;
+    private double strafe = 0;
     private double rot = 0;
 
     public ArcadeDrive(Drive drive, Gamepad gamepad){
@@ -23,8 +23,8 @@ public class ArcadeDrive implements Command {
 
     @Override
     public void start(){
-        drive.setPower(0,0,0,0);
-        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     @Override
@@ -38,13 +38,13 @@ public class ArcadeDrive implements Command {
         }
 
         forward = driver.left_stick_y;
-        turn = driver.left_stick_x;
+        strafe = driver.left_stick_x;
         rot = driver.right_stick_x;
 
-        double frontLeftPower = forward - turn - rot;
-        double backLeftPower =  forward + turn - rot;
-        double frontRightPower = forward + turn + rot;
-        double backRightPower = forward - turn + rot;
+        double frontLeftPower = forward - strafe + rot;
+        double backLeftPower =  forward + strafe + rot;
+        double frontRightPower = forward + strafe - rot;
+        double backRightPower = forward - strafe - rot;
 
         frontLeftPower = Range.clip(frontLeftPower, -1, 1);
         backLeftPower = Range.clip(backLeftPower, -1, 1);

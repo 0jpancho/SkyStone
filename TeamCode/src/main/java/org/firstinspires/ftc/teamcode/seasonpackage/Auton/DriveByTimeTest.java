@@ -28,7 +28,9 @@ public class DriveByTimeTest extends LinearOpMode implements DogeOpMode {
         waitForStart();
 
         robot.runCommand(
-                new DriveByTime(drive, elapsedTime, 0.5, 3, DriveByTime.DirectionState.FORWARD)
+                new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.FORWARD)
         );
+
+        robot.stop();
     }
 }

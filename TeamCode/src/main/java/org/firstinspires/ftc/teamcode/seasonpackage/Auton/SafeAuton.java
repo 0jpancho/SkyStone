@@ -4,6 +4,7 @@ import com.disnodeteam.dogecommander.DogeCommander;
 import com.disnodeteam.dogecommander.DogeOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
@@ -13,8 +14,6 @@ public class SafeAuton extends LinearOpMode implements DogeOpMode {
 
     @Override
     public void runOpMode(){
-
-        ElapsedTime elapsedTime = new ElapsedTime();
 
         double duration = 1;
 
@@ -26,18 +25,21 @@ public class SafeAuton extends LinearOpMode implements DogeOpMode {
 
         robot.init();
 
+        double startTime = getRuntime();
+        telemetry.addData("Start Time", startTime);
+
         waitForStart();
 
-        elapsedTime.reset();
+        startTime -= getRuntime();
+        telemetry.addData("New Start Time", startTime);
 
-        while (opModeIsActive() && isStarted() &&  !isStopRequested())
-        {
-            while (elapsedTime.seconds() < duration){
-                drive.setPower(0.75, 0.75, 0.75, 0.75);
+        drive.setRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        if (opModeIsActive() && !isStopRequested() && isStopRequested()){
+            while (startTime < duration){
+                drive.setPower(0.5, 0.5, 0.5, 0.5);
             }
             drive.setPower(0, 0, 0, 0);
         }
-
-
     }
 }

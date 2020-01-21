@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.robot.autoncommands;
 
 import com.disnodeteam.dogecommander.Command;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
@@ -12,9 +13,9 @@ public class DriveByTime implements Command {
     private double driveSpeed;
     private double duration;
 
-    private DirectionState direction;
+    private Direction direction;
 
-    public DriveByTime(Drive drive, ElapsedTime elapsedTime, double driveSpeed, double duration, DirectionState direction){
+    public DriveByTime(Drive drive, ElapsedTime elapsedTime, double driveSpeed, double duration, Direction direction){
         this.drive = drive;
         this.elapsedTime = elapsedTime;
         this.driveSpeed = driveSpeed;
@@ -22,7 +23,7 @@ public class DriveByTime implements Command {
         this.direction = direction;
     }
 
-    public enum DirectionState{
+    public enum Direction {
         FORWARD,
         BACKWARD,
         STRAFE_LEFT,
@@ -33,6 +34,9 @@ public class DriveByTime implements Command {
     public void start(){
         elapsedTime = new ElapsedTime();
         elapsedTime.reset();
+
+        drive.setRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     @Override
@@ -59,7 +63,6 @@ public class DriveByTime implements Command {
 
     @Override
     public void stop(){
-        elapsedTime.reset();
         drive.setPower(0, 0, 0, 0);
     }
 

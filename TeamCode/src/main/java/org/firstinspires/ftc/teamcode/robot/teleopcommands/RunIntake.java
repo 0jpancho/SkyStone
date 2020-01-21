@@ -36,7 +36,7 @@ public class RunIntake implements Command {
         if (operator.dpad_up){
             intake.setPivotState(Intake.PivotState.DEPLOY);
         }
-        else if (operator.dpad_down){
+        else if (operator.dpad_down ){
             intake.setPivotState(Intake.PivotState.STOW);
         }
     }

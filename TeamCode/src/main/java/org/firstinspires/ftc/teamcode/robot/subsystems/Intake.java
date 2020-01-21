@@ -36,7 +36,7 @@ public class Intake implements Subsystem{
 
     public enum PivotState {
         STOW(1.0),
-        DEPLOY(0.5);
+        DEPLOY(0);
 
         private final double position;
 

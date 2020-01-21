@@ -30,7 +30,7 @@ public class FieldCentricDrive implements Command {
     @Override
     public void start(){
         drive.setPower(0,0,0,0);
-        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
 
@@ -77,10 +77,10 @@ public class FieldCentricDrive implements Command {
         forward = temp;
 
 
-        rawFLPow = forward + turn + rot;
-        rawBLPow = forward + turn - rot;
-        rawFRPow = forward - turn - rot;
-        rawBRPow = forward - turn + rot;
+        rawFLPow = forward - turn + rot;
+        rawBLPow = forward + turn + rot;
+        rawFRPow = forward + turn - rot;
+        rawBRPow = forward - turn -  rot;
 
         FLPow = Range.clip(rawFLPow, -1, 1);
         BLPow = Range.clip(rawBLPow, -1, 1);

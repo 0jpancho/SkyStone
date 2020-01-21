@@ -700,7 +700,7 @@ Version 2.00 (released on 16.08.19)
  * For LinearOpMode the user now must for a telemetry.update() to update the telemetry data on the driver station.  This update() mechanism ensures that the driver station gets the updated data properly and at the same time.
  * The Auto Configure function of the Robot Controller is now template based.  If there is a commonly used robot configuration, a template can be created so that the Auto Configure mechanism can be used to quickly configure a robot of this type.
  * The logic to detect a runaway op mode (both in the LinearOpMode and OpMode types) and to abort the run, then auto recover has been improved/implemented.
- * Fix has been incorporated so that Logitech F310 gamepad mappings will be correct for Marshmallow users.
+ * Fix has been incorporated so that Logitech F310 operator mappings will be correct for Marshmallow users.
 
 **************************************************************************************
 
@@ -763,9 +763,9 @@ Release 16.02.09
     - When running an op mode, if one or more modules gets disconnected, the RC & DS will display warnings,and robot will keep on working in spite of the missing module(s).
     - If a disconnected module gets physically reconnected the RC will auto detect the module and the user will regain control of the recently connected module.
     - Warning messages are more helpful (identifies the type of module that’s missing plus its USB serial number).   
- * Code changes to fix the null gamepad reference when users try to reference the gamepads in the init() portion of their op mode.
+ * Code changes to fix the null operator reference when users try to reference the gamepads in the init() portion of their op mode.
  * NXT light sensor output is now properly scaled.  Note that teams might have to readjust their light threshold values in their op modes.
- * On DS user interface, gamepad icon for a driver will disappear if the matching gamepad is disconnected or if that gamepad gets designated as a different driver.
+ * On DS user interface, operator icon for a driver will disappear if the matching operator is disconnected or if that operator gets designated as a different driver.
  * Robot Protocol (ROBOCOL) version number info is displayed in About screen on RC and DS apps.
  * Incorporated a display filter on pairing screen to filter out devices that don’t use the “<TEAM NUMBER>-“ format. This filter can be turned off to show all WiFi Direct devices.
  * Updated text in License file.
@@ -793,7 +793,7 @@ Release 16.01.04
  * Fix for "missing hardware leaves robot controller disconnected from driver station" error
  * fix for "fast tapping of Init/Start causes problems" (toast is now only instantiated on UI thread).
  * added some log statements for thread life cycle.
- * moved gamepad reset logic inside of initActiveOpMode() for robustness
+ * moved operator reset logic inside of initActiveOpMode() for robustness
  * changes made to mitigate risk of race conditions on public methods.
  * changes to try and flag when WiFi Direct name contains non-printable characters.
  * fix to correct race condition between .run() and .close() in ReadWriteRunnableStandard.
@@ -801,7 +801,7 @@ Release 16.01.04
  * made ReadWriteRunnableStanard interface public.
  * fixed off-by-one errors in Command constructor
  * moved specific hardware implmentations into their own package.
- * moved specific gamepad implemnatations to the hardware library.
+ * moved specific operator implemnatations to the hardware library.
  * changed LICENSE file to new BSD version.
  * fixed race condition when shutting down Modern Robotics USB devices.
  * methods in the ColorSensor classes have been synchronized.
@@ -833,7 +833,7 @@ Release 15.11.04.001
  * Fixed timer UI issue
  * Fixed duplicate name UI bug (Legacy Module configuration).
  * Fixed race condition in EventLoopManager.
- * Fix to keep references stable when updating gamepad.
+ * Fix to keep references stable when updating operator.
  * For legacy Matrix motor/servo controllers removed necessity of appending "Motor" and "Servo" to controller names.
  * Updated HT color sensor driver to use constants from ModernRoboticsUsbLegacyModule class.
  * Updated MR color sensor driver to use constants from ModernRoboticsUsbDeviceInterfaceModule class.
