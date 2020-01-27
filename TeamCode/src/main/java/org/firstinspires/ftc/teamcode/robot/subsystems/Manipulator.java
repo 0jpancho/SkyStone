@@ -14,25 +14,25 @@ public class Manipulator implements Subsystem {
 
     private HardwareMap hardwareMap;
 
-    private CRServo pivotL, pivotR;
+    //private CRServo pivotL, pivotR;
 
-    private double pivotPower;
-    private double multiplier;
+    //private double pivotPower;
+    //private double multiplier;
 
-    //private Servo pivotL, pivotR, inverter, gripper;
+    private Servo pivotL, pivotR, inverter, gripper;
 
-    //public PivotState pivotState = PivotState.STOW;
-    //public InverterState inverterState = InverterState.STOW;
-    //public GripperState gripperState = GripperState.RELEASE;
+    public PivotState pivotState = PivotState.STOW;
+    public InverterState inverterState = InverterState.STOW;
+    public GripperState gripperState = GripperState.RELEASE;
 
     public Manipulator(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
     }
 
-    /*
+
     public enum PivotState {
-        STOW(0.0),
-        DEPLOY(1.0);
+        STOW(1.0),
+        DEPLOY(0.0);
 
         private final double position;
 
@@ -74,8 +74,8 @@ public class Manipulator implements Subsystem {
     public void setGripperState(GripperState gripperState){
         this.gripperState = gripperState;
     }
-    */
 
+    /*
     public void setPivotPower(double power, double multiplier){
 
         this.pivotPower = power;
@@ -84,31 +84,33 @@ public class Manipulator implements Subsystem {
         pivotL.setPower(this.pivotPower * this.multiplier);
         pivotR.setPower(this.pivotPower * this.multiplier);
     }
+    */
+
 
     @Override
     public void initHardware(){
-        //pivotL = hardwareMap.servo.get(HardwareKeys.GRIPPER_PIVOT_L);
-        //pivotR = hardwareMap.servo.get(HardwareKeys.GRIPPER_PIVOT_R);
+        pivotL = hardwareMap.servo.get(HardwareKeys.GRIPPER_PIVOT_L);
+        pivotR = hardwareMap.servo.get(HardwareKeys.GRIPPER_PIVOT_R);
 
-        //inverter = hardwareMap.servo.get(HardwareKeys.INVERTER);
-        //gripper = hardwareMap.servo.get(HardwareKeys.GRIPPER_ARM);
+        inverter = hardwareMap.servo.get(HardwareKeys.INVERTER);
+        gripper = hardwareMap.servo.get(HardwareKeys.GRIPPER_ARM);
 
-        pivotL = hardwareMap.crservo.get(HardwareKeys.GRIPPER_PIVOT_L);
-        pivotR = hardwareMap.crservo.get(HardwareKeys.GRIPPER_PIVOT_R);
+        //pivotL = hardwareMap.crservo.get(HardwareKeys.GRIPPER_PIVOT_L);
+        //pivotR = hardwareMap.crservo.get(HardwareKeys.GRIPPER_PIVOT_R);
 
-        pivotR.setDirection(DcMotorSimple.Direction.REVERSE);
+        pivotR.setDirection(Servo.Direction.REVERSE);
 
     }
 
     @Override
     public void periodic(){
-        //pivotL.setPosition(pivotState.position);
-        //pivotR.setPosition(pivotState.position);
+        pivotL.setPosition(pivotState.position);
+        pivotR.setPosition(pivotState.position);
 
-        //inverter.setPosition(inverterState.position);
-        //gripper.setPosition(gripperState.position);
+        inverter.setPosition(inverterState.position);
+        gripper.setPosition(gripperState.position);
 
-        setPivotPower(pivotPower, multiplier);
+        //setPivotPower(pivotPower, multiplier);
 
     }
 }

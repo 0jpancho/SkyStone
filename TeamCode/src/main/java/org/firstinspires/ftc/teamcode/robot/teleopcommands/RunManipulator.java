@@ -10,9 +10,9 @@ public class RunManipulator implements Command {
     private Manipulator manipulator;
     private Gamepad operator;
 
-    //boolean pivotToggle = false;
-    //boolean inverterToggle = false;
-    //boolean gripperToggle = false;
+    boolean pivotToggle = false;
+    boolean inverterToggle = false;
+    boolean gripperToggle = false;
 
     public RunManipulator(Manipulator manipulator, Gamepad gamepad){
         this.manipulator = manipulator;
@@ -21,15 +21,14 @@ public class RunManipulator implements Command {
 
     @Override
     public void start(){
-        //manipulator.setPivotState(Manipulator.PivotState.STOW);
-        //manipulator.setInverterState(Manipulator.InverterState.STOW);
-        //manipulator.setGripperState(Manipulator.GripperState.GRIP);
+        manipulator.setPivotState(Manipulator.PivotState.STOW);
+        manipulator.setInverterState(Manipulator.InverterState.STOW);
+        manipulator.setGripperState(Manipulator.GripperState.GRIP);
     }
 
     @Override
     public void periodic(){
 
-        /*
         if(operator.x && !pivotToggle) {
             if(manipulator.pivotState.equals(Manipulator.PivotState.STOW) ) {
                 manipulator.setPivotState(Manipulator.PivotState.DEPLOY);
@@ -68,8 +67,8 @@ public class RunManipulator implements Command {
         else if (operator.b){
             gripperToggle = false;
         }
-        */
-         manipulator.setPivotPower(-operator.right_stick_y, 0.5);
+
+         //manipulator.setPivotPower(-operator.right_stick_y, 0.5);
     }
 
     @Override

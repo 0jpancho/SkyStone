@@ -23,8 +23,8 @@ public class HardwareKeys {
     //Manipulator Servos
     public static final String GRIPPER_PIVOT_L = "gripperPivotL";
     public static final String GRIPPER_PIVOT_R = "gripperPivotR";
-    public static final String GRIPPER_ARM = "gripperArm";
     public static final String INVERTER = "inverter";
+    public static final String GRIPPER_ARM = "gripperArm";
 
 
 }
