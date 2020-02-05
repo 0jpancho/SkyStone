@@ -9,6 +9,12 @@ public class HardwareKeys {
     public static final String FR_NAME = "frontRight";
     public static final String BR_NAME = "backRight";
 
+    //Drivebase Superstructure Things
+    public static final String MOVER_L_NAME = "moverL";
+    public static final String MOVER_R_NAME = "moverR";
+    public static final String STONE_GRABBER_NAME = "stoneGrabber";
+    public static final String COLOR_SENSOR_NAME = "colorSensor";
+
     //Intake Motors
     public static final String LEFT_NAME = "intakeLeft";
     public static final String RIGHT_NAME = "intakeRight";

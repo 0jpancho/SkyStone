@@ -31,8 +31,8 @@ public class Manipulator implements Subsystem {
 
 
     public enum PivotState {
-        STOW(1.0),
-        DEPLOY(0.0);
+        STOW(1),
+        DEPLOY(0);
 
         private final double position;
 

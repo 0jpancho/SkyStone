@@ -30,6 +30,17 @@ public class ArcadeDrive implements Command {
     @Override
     public void periodic(){
 
+        double lTrigger = driver.left_trigger;
+        double rTrigger = driver.right_trigger;
+
+        if (lTrigger > .3){
+            drive.setPower(-lTrigger, lTrigger, lTrigger, -lTrigger);
+        }
+
+        if (rTrigger > .3){
+            drive.setPower(rTrigger, -rTrigger, -rTrigger, rTrigger);
+        }
+
         if (driver.right_bumper){
             drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }

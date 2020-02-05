@@ -38,7 +38,7 @@ public class RunManipulator implements Command {
             }
             pivotToggle = true;
         }
-        else if(!operator.a){
+        else if(!operator.x){
             pivotToggle = false;
         }
 
@@ -64,7 +64,7 @@ public class RunManipulator implements Command {
             }
             gripperToggle = true;
         }
-        else if (operator.b){
+        else if (!operator.b){
             gripperToggle = false;
         }
 

@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode.robot.subsystems;
 
 import com.disnodeteam.dogecommander.Subsystem;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.hardware.HardwareKeys;
 import org.firstinspires.ftc.teamcode.util.MotorPair;
@@ -20,6 +22,35 @@ public class Drive implements Subsystem{
     private double backLeftPow = 0;
     private double frontRightPow = 0;
     private double backRightPow = 0;
+
+    private Servo moverLeft, moverRight, stoneGrabber;
+
+    MoverState moverState = MoverState.STOW;
+    GrabberState grabberState = GrabberState.STOW;
+
+    private ColorSensor sensor;
+
+    public enum MoverState {
+        STOW(0.5),
+        DEPLOY(0.0);
+
+        private final double position;
+
+        MoverState(double position){
+            this.position = position;
+        }
+    }
+
+    public enum GrabberState {
+        STOW(0.0),
+        DEPLOY(0.5);
+
+        private final double position;
+
+        GrabberState(double position){
+            this.position = position;
+        }
+    }
 
     public Drive(HardwareMap hardwareMap){
         this.hardwareMap = hardwareMap;
@@ -47,6 +78,15 @@ public class Drive implements Subsystem{
 
         leftStrafePair = new MotorPair(frontLeft, backRight);
         rightStrafePair = new MotorPair(frontRight, backLeft);
+
+        moverLeft = hardwareMap.servo.get(HardwareKeys.MOVER_L_NAME);
+        moverRight = hardwareMap.servo.get(HardwareKeys.MOVER_R_NAME);
+
+        moverLeft.setDirection(Servo.Direction.REVERSE);
+
+        stoneGrabber = hardwareMap.servo.get(HardwareKeys.STONE_GRABBER_NAME);
+
+        sensor = hardwareMap.colorSensor.get(HardwareKeys.COLOR_SENSOR_NAME);
     }
 
     @Override
@@ -55,6 +95,11 @@ public class Drive implements Subsystem{
         backLeft.setPower(backLeftPow);
         frontRight.setPower(frontRightPow);
         backRight.setPower(backRightPow);
+
+        moverLeft.setPosition(moverState.position);
+        moverRight.setPosition(moverState.position);
+
+        stoneGrabber.setPosition(grabberState.position);
     }
 
     public void setPIDFCoeffs(DcMotor.RunMode runMode, PIDFCoefficients coefficients){
