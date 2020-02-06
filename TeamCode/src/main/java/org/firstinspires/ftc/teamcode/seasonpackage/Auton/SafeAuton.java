@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.seasonpackage.Auton;
 import com.disnodeteam.dogecommander.DogeCommander;
 import com.disnodeteam.dogecommander.DogeOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -10,6 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 
 @Autonomous(name = "Safe Auto")
+@Disabled
 public class SafeAuton extends LinearOpMode implements DogeOpMode {
 
     @Override
@@ -19,7 +21,7 @@ public class SafeAuton extends LinearOpMode implements DogeOpMode {
 
         DogeCommander robot = new DogeCommander(this);
 
-        Drive drive = new Drive(hardwareMap);
+        Drive drive = new Drive(hardwareMap, telemetry);
 
         robot.registerSubsystem(drive);
 

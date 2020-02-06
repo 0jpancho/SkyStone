@@ -1,6 +1,6 @@
-package org.firstinspires.ftc.teamcode.hardware;
+package org.firstinspires.ftc.teamcode;
 
-public class HardwareKeys {
+public abstract class HardwareKeys {
 
     // Drive Motors
     public static final String FL_NAME = "frontLeft";
@@ -8,6 +8,12 @@ public class HardwareKeys {
 
     public static final String FR_NAME = "frontRight";
     public static final String BR_NAME = "backRight";
+
+    //Drive base things
+    public static final String MOVER_L_NAME = "leftMover";
+    public static final String MOVER_R_NAME = "rightMover";
+    public static final String STONE_GRABBER_NAME = "stoneGrabber";
+    public static final String COLOR_SENSOR_NAME = "colorSensor";
 
     //Intake Motors
     public static final String LEFT_NAME = "intakeLeft";
