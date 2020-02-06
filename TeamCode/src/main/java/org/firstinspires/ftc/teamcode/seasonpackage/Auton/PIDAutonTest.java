@@ -9,7 +9,6 @@ import com.disnodeteam.dogecommander.DogeOpMode;
 import org.firstinspires.ftc.teamcode.robot.autoncommands.DrivePID;
 import org.firstinspires.ftc.teamcode.robot.autoncommands.TurnPID;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
-import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.util.Constants;
 
@@ -22,13 +21,11 @@ public class PIDAutonTest extends LinearOpMode implements DogeOpMode {
 
         DogeCommander robot = new DogeCommander(this);
 
-        Drive drive = new Drive(hardwareMap);
+        Drive drive = new Drive(hardwareMap, telemetry);
         Intake intake = new Intake(hardwareMap);
-        IMU imu = new IMU(hardwareMap, telemetry);
 
         robot.registerSubsystem(drive);
         robot.registerSubsystem(intake);
-        robot.registerSubsystem(imu);
 
         robot.init();
 
@@ -36,6 +33,6 @@ public class PIDAutonTest extends LinearOpMode implements DogeOpMode {
 
         robot.runCommand(new DrivePID(drive, 0.5, 0.1, 0, 0, 12, 0, Constants.autoDrive, telemetry));
 
-        robot.runCommand(new TurnPID(drive, 0.5, 0.1, 0,0, 90, imu, 5, Constants.autoTurn, telemetry));
+        robot.runCommand(new TurnPID(drive, 0.5, 0.1, 0,0, 90, 5, Constants.autoTurn, telemetry));
     }
 }

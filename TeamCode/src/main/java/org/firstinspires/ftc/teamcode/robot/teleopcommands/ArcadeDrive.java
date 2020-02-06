@@ -12,6 +12,9 @@ public class ArcadeDrive implements Command {
     private Drive drive;
     private Gamepad driver;
 
+    private boolean brakeToggle;
+    private boolean isBrake;
+
     private double forward = 0;
     private double strafe = 0;
     private double rot = 0;
@@ -41,11 +44,16 @@ public class ArcadeDrive implements Command {
             drive.setPower(rTrigger, -rTrigger, -rTrigger, rTrigger);
         }
 
-        if (driver.right_bumper){
+        if(driver.right_bumper){
+            drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        }
+
+        else{
             drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
-        else{
-            drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+
+        if (driver.left_bumper){
+            drive.zeroHeading();
         }
 
         forward = driver.left_stick_y;

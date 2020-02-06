@@ -10,20 +10,17 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
-import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 
 public class FieldCentricDrive implements Command {
 
     private Drive drive;
-    private IMU imu;
     private Orientation angles;
     private Gamepad driver;
 
     private double forward, turn, rot;
 
-    public FieldCentricDrive(Drive drive, IMU imu, Gamepad gamepad){
+    public FieldCentricDrive(Drive drive, Gamepad gamepad){
         this.drive = drive;
-        this.imu = imu;
         this.driver = gamepad;
     }
 
@@ -48,21 +45,22 @@ public class FieldCentricDrive implements Command {
             drive.setPower(rTrigger, -rTrigger, -rTrigger, rTrigger);
         }
 
+        if (driver.right_bumper){
+            drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        }
+        else{
+            drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        }
+
+        if (driver.left_bumper){
+            drive.zeroHeading();
+        }
+
         forward = -driver.left_stick_y;
         turn = driver.left_stick_x;
         rot = driver.right_stick_x;
 
-        double rawFLPow;
-        double rawBLPow;
-        double rawFRPow;
-        double rawBRPow;
-
-        double FLPow;
-        double BLPow;
-        double FRPow;
-        double BRPow;
-
-        angles = imu.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        angles = drive.imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
         if (angles.firstAngle < 0){
             angles.firstAngle += 360;
@@ -77,15 +75,15 @@ public class FieldCentricDrive implements Command {
         forward = temp;
 
 
-        rawFLPow = forward - turn + rot;
-        rawBLPow = forward + turn + rot;
-        rawFRPow = forward + turn - rot;
-        rawBRPow = forward - turn -  rot;
+        double rawFLPow = forward - turn + rot;
+        double rawBLPow = forward + turn + rot;
+        double rawFRPow = forward + turn - rot;
+        double rawBRPow = forward - turn -  rot;
 
-        FLPow = Range.clip(rawFLPow, -1, 1);
-        BLPow = Range.clip(rawBLPow, -1, 1);
-        FRPow = Range.clip(rawFRPow, -1, 1);
-        BRPow = Range.clip(rawBRPow, -1, 1);
+        double FLPow = Range.clip(rawFLPow, -1, 1);
+        double BLPow = Range.clip(rawBLPow, -1, 1);
+        double FRPow = Range.clip(rawFRPow, -1, 1);
+        double BRPow = Range.clip(rawBRPow, -1, 1);
 
         drive.setPower(FLPow, BLPow, FRPow, BRPow);
     }

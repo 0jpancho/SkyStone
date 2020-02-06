@@ -6,23 +6,21 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
-import org.firstinspires.ftc.teamcode.robot.subsystems.IMU;
 import org.firstinspires.ftc.teamcode.util.SynchronousPID;
 
 public class TurnPID implements Command {
 
     private Drive drive;
-    private IMU imu;
     private Telemetry t;
 
     private double maxTurn = 0;
 
-    private double p = 0;
-    private double i = 0;
-    private double d = 0;
+    private double p;
+    private double i;
+    private double d;
 
-    private double angle = 0;
-    private double turnTolerance = 0;
+    private double angle;
+    private double turnTolerance;
 
     private double heading = 0;
     private double turnFactor = 0;
@@ -31,11 +29,10 @@ public class TurnPID implements Command {
 
     private SynchronousPID turnPID;
 
-    public TurnPID(Drive drive, double maxTurn, double p, double i, double d, double angle, IMU imu,
+    public TurnPID(Drive drive, double maxTurn, double p, double i, double d, double angle,
                    double turnTolerance, PIDFCoefficients coefficients, Telemetry telemetry){
 
         this.drive = drive;
-        this.imu = imu;
         this.t = telemetry;
 
         this.maxTurn = maxTurn;
@@ -50,7 +47,7 @@ public class TurnPID implements Command {
 
         this.coefficients = coefficients;
 
-        imu.zeroHeading();
+        drive.zeroHeading();
 
         drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
@@ -64,17 +61,17 @@ public class TurnPID implements Command {
         turnPID.setSetpoint(angle);
         turnPID.setDeadband(turnTolerance);
 
-        heading = imu.getHeading();
-        turnFactor = turnPID.calculateGivenError(angle - imu.getHeading());
+        heading = drive.getHeading();
+        turnFactor = turnPID.calculateGivenError(angle - drive.getHeading());
 
-        /*
+
         if (turnFactor > -.07 && turnFactor < 0) {
             turnFactor = -.07;
         }
         if (turnFactor < .07 && turnFactor > 0) {
             turnFactor = .07;
         }
-        */
+
 
 
         drive.setStrDrive(turnFactor, -turnFactor);

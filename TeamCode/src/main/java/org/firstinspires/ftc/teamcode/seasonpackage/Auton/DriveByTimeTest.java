@@ -19,7 +19,7 @@ public class DriveByTimeTest extends LinearOpMode implements DogeOpMode {
 
         DogeCommander robot = new DogeCommander(this);
 
-        Drive drive = new Drive(hardwareMap);
+        Drive drive = new Drive(hardwareMap, telemetry);
 
         robot.registerSubsystem(drive);
 
