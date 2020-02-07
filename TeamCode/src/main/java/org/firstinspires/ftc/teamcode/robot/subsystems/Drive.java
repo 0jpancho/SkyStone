@@ -55,8 +55,8 @@ public class Drive implements Subsystem{
     }
 
     public enum GrabberState {
-        STOW(0.0),
-        DEPLOY(0.5);
+        STOW(0.5),
+        DEPLOY(0.0);
 
         private final double position;
 

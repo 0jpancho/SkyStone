@@ -35,23 +35,23 @@ public class MainTeleop extends LinearOpMode implements DogeOpMode {
 
         robot.init();
 
-        waitForStart();
-
         drive.setRunMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         drive.setRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         drive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        if (isStopRequested() || !opModeIsActive()){
-            robot.stop();
-        }
-        else{
-            robot.runCommandsParallel(
-                    //new FieldCentricDrive(drive, imu, gamepad1),
+        waitForStart();
+
+        robot.runCommandsParallel(
+                    //new FieldCentricDrive(drive, gamepad1),
                     new ArcadeDrive(drive, gamepad1),
                     new RunIntake(intake, gamepad2),
-                    new PowerLift(lift, gamepad2, 0.5),
+                    new PowerLift(lift, gamepad2, 0.75, 0.35),
                     new RunManipulator(gripper, gamepad2)
             );
+
+        if(isStopRequested()){
+            robot.stop();
+            stop();
         }
     }
 }

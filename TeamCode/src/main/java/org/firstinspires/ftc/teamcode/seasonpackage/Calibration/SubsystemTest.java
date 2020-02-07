@@ -32,7 +32,7 @@ public class SubsystemTest extends LinearOpMode implements DogeOpMode {
 
         robot.runCommandsParallel(
                 new RunManipulator(manipulator, gamepad2),
-                new PowerLift(lift, gamepad2, 0.5)
+                new PowerLift(lift, gamepad2, 0.5, 0.5)
         );
     }
 }

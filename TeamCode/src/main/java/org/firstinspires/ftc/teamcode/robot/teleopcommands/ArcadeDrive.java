@@ -12,9 +12,6 @@ public class ArcadeDrive implements Command {
     private Drive drive;
     private Gamepad driver;
 
-    private boolean brakeToggle;
-    private boolean isBrake;
-
     private double forward = 0;
     private double strafe = 0;
     private double rot = 0;

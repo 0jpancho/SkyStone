@@ -30,7 +30,7 @@ public class RunIntake implements Command {
             intake.setPowerState(Intake.PowerState.SPIT_OUT);
         }
         else{
-            intake.setPowerState(Intake.PowerState.STOP);
+            intake .setPowerState(Intake.PowerState.STOP);
         }
 
         if (operator.dpad_up){

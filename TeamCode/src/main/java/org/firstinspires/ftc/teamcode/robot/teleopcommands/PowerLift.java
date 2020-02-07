@@ -9,12 +9,13 @@ public class PowerLift implements Command {
 
     private Lift lift;
     private Gamepad operator;
-    private double multiplier;
+    private double upMultiplier, downMultiplier;
 
-    public PowerLift(Lift lift, Gamepad operator, double multiplier){
+    public PowerLift(Lift lift, Gamepad operator, double upMultiplier, double downMultiplier){
         this.lift = lift;
         this.operator = operator;
-        this.multiplier = multiplier;
+        this.upMultiplier = upMultiplier;
+        this.downMultiplier = downMultiplier;
     }
 
     @Override
@@ -24,7 +25,14 @@ public class PowerLift implements Command {
 
     @Override
     public void periodic(){
-        lift.setLiftPower(operator.left_stick_y * multiplier);
+
+        if (operator.left_stick_y < 0){
+            lift.setLiftPower(operator.left_stick_y * upMultiplier);
+        }
+
+        if (operator.left_stick_y > 0){
+            lift.setLiftPower(operator.left_stick_y * downMultiplier);
+        }
     }
 
     @Override

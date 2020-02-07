@@ -10,11 +10,6 @@ public class Manipulator implements Subsystem {
 
     private HardwareMap hardwareMap;
 
-    //private CRServo pivotL, pivotR;
-
-    //private double pivotPower;
-    //private double multiplier;
-
     private Servo pivotL, pivotR, inverter, gripper;
 
     public PivotState pivotState = PivotState.STOW;
@@ -27,8 +22,8 @@ public class Manipulator implements Subsystem {
 
 
     public enum PivotState {
-        STOW(1),
-        DEPLOY(0);
+        STOW(0),
+        DEPLOY(1);
 
         private final double position;
 
@@ -38,8 +33,8 @@ public class Manipulator implements Subsystem {
     }
 
     public enum InverterState {
-        STOW(0.0),
-        FLIP(1.0);
+        STOW(1),
+        FLIP(0);
 
         private final double position;
 
@@ -49,7 +44,7 @@ public class Manipulator implements Subsystem {
     }
 
     public enum GripperState{
-        GRIP(1.0),
+        GRIP(0.5),
         RELEASE(0.0);
 
         private final double position;
@@ -71,18 +66,6 @@ public class Manipulator implements Subsystem {
         this.gripperState = gripperState;
     }
 
-    /*
-    public void setPivotPower(double power, double multiplier){
-
-        this.pivotPower = power;
-        this.multiplier = multiplier;
-
-        pivotL.setPower(this.pivotPower * this.multiplier);
-        pivotR.setPower(this.pivotPower * this.multiplier);
-    }
-    */
-
-
     @Override
     public void initHardware(){
         pivotL = hardwareMap.servo.get(HardwareKeys.GRIPPER_PIVOT_L);
@@ -90,9 +73,6 @@ public class Manipulator implements Subsystem {
 
         inverter = hardwareMap.servo.get(HardwareKeys.INVERTER);
         gripper = hardwareMap.servo.get(HardwareKeys.GRIPPER_ARM);
-
-        //pivotL = hardwareMap.crservo.get(HardwareKeys.GRIPPER_PIVOT_L);
-        //pivotR = hardwareMap.crservo.get(HardwareKeys.GRIPPER_PIVOT_R);
 
         pivotR.setDirection(Servo.Direction.REVERSE);
 
@@ -105,8 +85,5 @@ public class Manipulator implements Subsystem {
 
         inverter.setPosition(inverterState.position);
         gripper.setPosition(gripperState.position);
-
-        //setPivotPower(pivotPower, multiplier);
-
     }
 }
