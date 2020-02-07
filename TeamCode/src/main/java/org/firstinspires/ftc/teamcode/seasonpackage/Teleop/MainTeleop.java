@@ -41,6 +41,8 @@ public class MainTeleop extends LinearOpMode implements DogeOpMode {
 
         waitForStart();
 
+        drive.setGrabberState(Drive.GrabberState.STOW);
+
         robot.runCommandsParallel(
                     //new FieldCentricDrive(drive, gamepad1),
                     new ArcadeDrive(drive, gamepad1),

@@ -71,6 +71,10 @@ public class DrivePID implements Command {
 
         rightPID.setOutputRange(-maxSpeed, maxSpeed);
         rightPID.setSetpoint(targetPulses);
+    }
+
+    @Override
+    public void periodic(){
 
         left = leftPID.calculate(leftEncoder);
         right = rightPID.calculate(rightEncoder);
@@ -89,11 +93,6 @@ public class DrivePID implements Command {
         drive.setStrDrive(left, right);
 
         t.update();
-    }
-
-    @Override
-    public void periodic(){
-
     }
 
     @Override

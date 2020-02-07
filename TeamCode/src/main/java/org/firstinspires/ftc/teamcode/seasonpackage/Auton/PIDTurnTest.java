@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.util.Constants;
 
 @Autonomous(name = "Doge Auton Test", group = "Autonomous")
 @Disabled
-public class PIDAutonTest extends LinearOpMode implements DogeOpMode {
+public class PIDTurnTest extends LinearOpMode implements DogeOpMode {
 
     @Override
     public void runOpMode(){
@@ -30,8 +30,6 @@ public class PIDAutonTest extends LinearOpMode implements DogeOpMode {
         robot.init();
 
         waitForStart();
-
-        robot.runCommand(new DrivePID(drive, 0.5, 0.1, 0, 0, 12, 0, Constants.autoDrive, telemetry));
 
         robot.runCommand(new TurnPID(drive, 0.5, 0.1, 0,0, 90, 5, Constants.autoTurn, telemetry));
     }
