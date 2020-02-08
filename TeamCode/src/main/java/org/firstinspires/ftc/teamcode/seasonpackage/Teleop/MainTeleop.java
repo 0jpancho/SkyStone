@@ -45,7 +45,7 @@ public class MainTeleop extends LinearOpMode implements DogeOpMode {
                     //new FieldCentricDrive(drive, gamepad1),
                     new ArcadeDrive(drive, gamepad1),
                     new RunIntake(intake, gamepad2),
-                    new PowerLift(lift, gamepad2, 0.75, 0.35),
+                    new PowerLift(lift, gamepad2, 1, 0.25),
                     new RunManipulator(gripper, gamepad2)
             );
 

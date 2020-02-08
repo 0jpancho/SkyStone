@@ -25,14 +25,18 @@ public class PowerLift implements Command {
 
     @Override
     public void periodic(){
-
-        if (operator.left_stick_y < 0){
-            lift.setLiftPower(operator.left_stick_y * upMultiplier);
+        if (operator.left_trigger > 0.1){
+            lift.setLiftPower(-operator.left_trigger * upMultiplier);
         }
 
-        if (operator.left_stick_y > 0){
-            lift.setLiftPower(operator.left_stick_y * downMultiplier);
+        else if (operator.right_trigger > 0.1){
+            lift.setLiftPower(operator.left_trigger * downMultiplier);
         }
+
+        else{
+            lift.setLiftPower(0);
+        }
+
     }
 
     @Override

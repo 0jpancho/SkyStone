@@ -39,7 +39,6 @@ public class Drive implements Subsystem{
     private double backRightPow = 0;
 
     public BNO055IMU imu;
-    public Orientation angles;
 
     private float headingOffset;
 
@@ -55,7 +54,7 @@ public class Drive implements Subsystem{
     }
 
     public enum GrabberState {
-        STOW(0.5),
+        STOW(0.4),
         DEPLOY(0.0);
 
         private final double position;

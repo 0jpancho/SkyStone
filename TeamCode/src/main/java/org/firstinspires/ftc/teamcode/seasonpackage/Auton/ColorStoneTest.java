@@ -22,65 +22,65 @@ public class ColorStoneTest extends LinearOpMode implements DogeOpMode {
 
         ElapsedTime elapsedTime = new ElapsedTime();
 
-        if(!opModeIsActive() && !isStopRequested() && !isStarted()){
-            robot.stop();
+        //Start routine - strafe to stones
+        robot.runCommand(
+            new DriveByTime(drive, elapsedTime, 0.5, 3, DriveByTime.Direction.STRAFE_LEFT)
+        );
+
+        //Move to first stone nearest to mid field
+        robot.runCommand(
+            new DriveByTime(drive, elapsedTime, 0.25, 1, DriveByTime.Direction.FORWARD)
+        );
+
+        //Check first position
+        if (drive.stoneFound()){
+            drive.setGrabberState(Drive.GrabberState.DEPLOY);
+
+            robot.runCommand(
+                new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.STRAFE_RIGHT)
+            );
+
+            robot.runCommand(
+                new DriveByTime(drive, elapsedTime, 0.6, 4, DriveByTime.Direction.FORWARD)
+            );
         }
 
         else{
-            //Start routine - strafe to stones
-            robot.runCommand(
-                new DriveByTime(drive, elapsedTime, 0.5, 3, DriveByTime.Direction.STRAFE_LEFT)
-            );
+            new DriveByTime(drive, elapsedTime, 0.25, 0.5, DriveByTime.Direction.BACKWARD);
 
-            //Move to first stone nearest to mid field
-            robot.runCommand(
-                new DriveByTime(drive, elapsedTime, 0.25, 1, DriveByTime.Direction.FORWARD)
-            );
-
-            //Check first position
+            //Check second position
             if (drive.stoneFound()){
                 drive.setGrabberState(Drive.GrabberState.DEPLOY);
 
                 robot.runCommand(
-                    new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.STRAFE_RIGHT)
+                        new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.STRAFE_RIGHT)
                 );
 
                 robot.runCommand(
-                    new DriveByTime(drive, elapsedTime, 0.6, 4, DriveByTime.Direction.FORWARD)
+                        new DriveByTime(drive, elapsedTime, 0.6, 4.25, DriveByTime.Direction.FORWARD)
                 );
             }
 
-            else{
+            //Grab third position and pray
+            else {
                 new DriveByTime(drive, elapsedTime, 0.25, 0.5, DriveByTime.Direction.BACKWARD);
+                drive.setGrabberState(Drive.GrabberState.DEPLOY);
 
-                //Check second position
-                if (drive.stoneFound()){
-                    drive.setGrabberState(Drive.GrabberState.DEPLOY);
+                robot.runCommand(
+                        new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.STRAFE_RIGHT)
+                );
 
-                    robot.runCommand(
-                            new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.STRAFE_RIGHT)
-                    );
+                robot.runCommand(
+                        new DriveByTime(drive, elapsedTime, 0.6, 4.5, DriveByTime.Direction.FORWARD)
+                );
 
-                    robot.runCommand(
-                            new DriveByTime(drive, elapsedTime, 0.6, 4.25, DriveByTime.Direction.FORWARD)
-                    );
-                }
 
-                //Grab third position and pray
-                else {
-                    new DriveByTime(drive, elapsedTime, 0.25, 0.5, DriveByTime.Direction.BACKWARD);
-                    drive.setGrabberState(Drive.GrabberState.DEPLOY);
-
-                    robot.runCommand(
-                            new DriveByTime(drive, elapsedTime, 0.5, 1, DriveByTime.Direction.STRAFE_RIGHT)
-                    );
-
-                    robot.runCommand(
-                            new DriveByTime(drive, elapsedTime, 0.6, 4.5, DriveByTime.Direction.FORWARD)
-                    );
-
-                }
             }
+        }
+
+        if(isStopRequested()){
+            robot.stop();
+            stop();
         }
     }
 }
