@@ -13,7 +13,7 @@ public class TurnPID implements Command {
     private Drive drive;
     private Telemetry t;
 
-    private double maxTurn = 0;
+    private double maxTurn;
 
     private double p;
     private double i;
@@ -49,7 +49,7 @@ public class TurnPID implements Command {
 
         drive.zeroHeading();
 
-        drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        //drive.setRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
         //drive.setPIDFCoeffs(DcMotor.RunMode.RUN_USING_ENCODER, coefficients);
     }
 
@@ -60,10 +60,13 @@ public class TurnPID implements Command {
         turnPID.setOutputRange(-maxTurn, maxTurn);
         turnPID.setSetpoint(angle);
         turnPID.setDeadband(turnTolerance);
+    }
+
+    @Override
+    public void periodic() {
 
         heading = drive.getHeading();
         turnFactor = turnPID.calculateGivenError(angle - drive.getHeading());
-
 
         if (turnFactor > -.07 && turnFactor < 0) {
             turnFactor = -.07;
@@ -72,19 +75,12 @@ public class TurnPID implements Command {
             turnFactor = .07;
         }
 
-
-
         drive.setStrDrive(turnFactor, -turnFactor);
 
         t.addData("Heading", heading);
         t.addData("Turn error", turnPID.getError());
         t.addData("TurnFactor", turnFactor);
         t.update();
-    }
-
-    @Override
-    public void periodic() {
-
     }
 
     @Override
