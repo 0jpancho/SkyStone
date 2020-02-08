@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.robot.autoncommands;
 
 import com.disnodeteam.dogecommander.Command;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -57,6 +56,7 @@ public class TurnPID implements Command {
     public void start(){
         drive.setPower(0,0,0,0);
 
+
         turnPID.setOutputRange(-maxTurn, maxTurn);
         turnPID.setSetpoint(angle);
         turnPID.setDeadband(turnTolerance);
@@ -65,6 +65,7 @@ public class TurnPID implements Command {
     @Override
     public void periodic() {
 
+        //Get heading and calculate correction
         heading = drive.getHeading();
         turnFactor = turnPID.calculateGivenError(angle - drive.getHeading());
 
@@ -75,6 +76,7 @@ public class TurnPID implements Command {
             turnFactor = .07;
         }
 
+        //Set motor powers
         drive.setStrDrive(turnFactor, -turnFactor);
 
         t.addData("Heading", heading);
@@ -90,6 +92,6 @@ public class TurnPID implements Command {
 
     @Override
     public boolean isCompleted(){
-        return (turnPID.onTarget(2));
+        return (turnPID.onTarget(2)); //2 degree tolerance
     }
 }

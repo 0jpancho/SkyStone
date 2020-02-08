@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystems.Drive;
 
 public class DriveByTime implements Command {
 
+    //Declare hardware
     private Drive drive;
     private ElapsedTime elapsedTime;
     private double driveSpeed;
@@ -23,6 +24,7 @@ public class DriveByTime implements Command {
         this.direction = direction;
     }
 
+    //Direction states
     public enum Direction {
         FORWARD,
         BACKWARD,
@@ -41,6 +43,8 @@ public class DriveByTime implements Command {
 
     @Override
     public void periodic() {
+
+        //Set motor powers on command loop
         switch (direction) {
 
             case FORWARD:

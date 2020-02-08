@@ -21,6 +21,7 @@ public class Intake implements Subsystem{
         this.hardwareMap = hardwareMap;
     }
 
+    //Intake motor power states
     public enum PowerState {
         INTAKE(1.0),
         SPIT_OUT(-0.6),
@@ -33,6 +34,7 @@ public class Intake implements Subsystem{
         }
     }
 
+    //Intake drop servo pivot states
     public enum PivotState {
         STOW(1.0),
         DEPLOY(0);
@@ -44,10 +46,12 @@ public class Intake implements Subsystem{
         }
     }
 
+    //State changer for intake motors
     public void setPowerState(PowerState powerState){
         this.powerState = powerState;
     }
 
+    //State changer for pivot servos
     public void setPivotState(PivotState pivotState){
         this.pivotState = pivotState;
     }

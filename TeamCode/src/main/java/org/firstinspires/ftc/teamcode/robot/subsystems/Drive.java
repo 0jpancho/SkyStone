@@ -31,8 +31,6 @@ public class Drive implements Subsystem{
     private MoverState moverState = MoverState.STOW;
     private GrabberState grabberState = GrabberState.STOW;
 
-    private ColorSensor colorSensor;
-
     private double frontLeftPow = 0;
     private double backLeftPow = 0;
     private double frontRightPow = 0;
@@ -42,6 +40,7 @@ public class Drive implements Subsystem{
 
     private float headingOffset;
 
+    //States for foundation movers
     public enum MoverState {
         STOW(0.0),
         DEPLOY(0.5);
@@ -53,6 +52,7 @@ public class Drive implements Subsystem{
         }
     }
 
+    //States for stone grabber
     public enum GrabberState {
         STOW(0.4),
         DEPLOY(0.0);
@@ -69,6 +69,7 @@ public class Drive implements Subsystem{
         this.t = telemetry;
     }
 
+    //Set powers to each motor concurrently
     public void setPower(double frontLeftPow, double backLeftPow, double frontRightPow, double backRightPow){
         this.frontLeftPow = frontLeftPow;
         this.backLeftPow = backLeftPow;
@@ -96,8 +97,6 @@ public class Drive implements Subsystem{
         rightMover = hardwareMap.servo.get(HardwareKeys.MOVER_R_NAME);
         stoneGrabber = hardwareMap.servo.get(HardwareKeys.STONE_GRABBER_NAME);
 
-        colorSensor = hardwareMap.colorSensor.get(HardwareKeys.COLOR_SENSOR_NAME);
-
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
@@ -120,23 +119,23 @@ public class Drive implements Subsystem{
         rightMover.setPosition(moverState.position);
         stoneGrabber.setPosition(grabberState.position);
 
-        t.addData("Red", colorSensor.red());
-        t.addData("Green", colorSensor.green());
-        t.addData("Blue", colorSensor.blue());
         t.addData("IMU Calibrated?", isCalibrated());
         t.addData("Normalized Heading", getHeading());
         t.addData("Raw ZYX Axis", imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES));
         t.update();
     }
 
+    //State changer for foundation movers
     public void setMoverState(MoverState state){
         this.moverState = state;
     }
 
+    //State changer for stone grabber
     public void setGrabberState(GrabberState state){
         this.grabberState = state;
     }
 
+    //Change drive motors between brake/coast
     public void setZeroPowerBehavior(DcMotor.ZeroPowerBehavior zeroPowerBehavior){
         frontLeft.setZeroPowerBehavior(zeroPowerBehavior);
         backLeft.setZeroPowerBehavior(zeroPowerBehavior);
@@ -145,8 +144,8 @@ public class Drive implements Subsystem{
         backRight .setZeroPowerBehavior(zeroPowerBehavior);
     }
 
+    //Change motor run mode
     public void setRunMode(DcMotor.RunMode runMode){
-
         frontLeft.setMode(runMode);
         backLeft.setMode(runMode);
 
@@ -154,10 +153,12 @@ public class Drive implements Subsystem{
         backRight.setMode(runMode);
     }
 
+    //Reset gyro heading
     public void zeroHeading() {
         this.headingOffset = imu.getAngularOrientation().firstAngle * -1;
     }
 
+    //Get gyro heading
     public double getHeading() {
         return normalize360(imu.getAngularOrientation().firstAngle * -1 - headingOffset);
     }
@@ -186,30 +187,6 @@ public class Drive implements Subsystem{
 
     private boolean isCalibrated(){
         return imu.isGyroCalibrated();
-    }
-
-    private int getR(){
-        return colorSensor.red();
-    }
-
-    private int getG(){
-        return colorSensor.green();
-    }
-
-    private int getB(){
-        return colorSensor.blue();
-    }
-
-    public boolean stoneFound(){
-
-        //Place holder value
-        if (getR() > 5){
-            return true;
-        }
-
-        else{
-            return false;
-        }
     }
 
     private void setStrL(double power){

@@ -20,7 +20,7 @@ public class Manipulator implements Subsystem {
         this.hardwareMap = hardwareMap;
     }
 
-
+    //Pivot servo states
     public enum PivotState {
         STOW(0),
         DEPLOY(1);
@@ -32,6 +32,7 @@ public class Manipulator implements Subsystem {
         }
     }
 
+    //Inverter servo states
     public enum InverterState {
         STOW(1),
         FLIP(0);
@@ -43,6 +44,7 @@ public class Manipulator implements Subsystem {
         }
     }
 
+    //Gripper servo states
     public enum GripperState{
         GRIP(0.5),
         RELEASE(0.0);
@@ -54,14 +56,17 @@ public class Manipulator implements Subsystem {
         }
     }
 
+    //State changer for pivot servos
     public void setPivotState(PivotState pivotState){
         this.pivotState = pivotState;
     }
 
+    //State changer for inverter servo
     public void setInverterState(InverterState inverterState){
         this.inverterState = inverterState;
     }
 
+    //State changer for gripper servo
     public void setGripperState(GripperState gripperState){
         this.gripperState = gripperState;
     }
